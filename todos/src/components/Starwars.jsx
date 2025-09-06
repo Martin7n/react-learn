@@ -36,14 +36,6 @@ const Starwars = (props) => {
         .catch(err => console.log(err));
     }, [])
 
-    // useEffect(() => {
-    //     fetch(`https://swapi.dev/api/people`)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             setCharacters(data.results);
-    //         })
-    //         .catch((err) => console.log(err));
-    // }, []);
 
     const getPlanetName = (planetUrl) => {
     const planet = planets.find((p) => p.url === planetUrl);
