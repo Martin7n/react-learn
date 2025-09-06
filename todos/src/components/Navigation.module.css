@@ -1,0 +1,15 @@
+
+.navUl {
+    background-color: rgb(218, 226, 224);
+
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     gap:20px;
+}
+.navLi {
+   list-style: none;
+   font-family:fantasy;
+   font-size: 2rem;
+
+}
