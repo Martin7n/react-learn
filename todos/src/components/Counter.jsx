@@ -45,13 +45,12 @@ const Counter = () => {
 
 
 
-   
-
-
     return (
         <div>
 
-            <h1>{val}</h1>
+            <h1>{val % 2 == 0 ? val : `odd > ${val}` }</h1>
+
+            <p> {val>0 && "positive"}</p>
 
             <button onClick={increaseVal}>Increase</button>
             <button onClick={decreaseVal}>Decrease</button>
@@ -59,9 +58,6 @@ const Counter = () => {
                         
             <button onClick={startCount}>startCount</button>
              <button onClick={stopCount}>stopCount</button>
-
-
-
 
 
         </div>
