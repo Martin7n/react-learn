@@ -42,8 +42,14 @@ const Starwars = (props) => {
     return planet ? planet.name : "Unknown Planet";
     };
 
+
+    
+
     return (<div>
         <h2>SW api results</h2>
+
+    
+
 
         <ul>
             {heroes.map((hero) => (

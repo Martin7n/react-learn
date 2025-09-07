@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import Todos from './components/Todos'
 import Starwars from './components/Starwars'
+import Counter from './components/Counter'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +16,8 @@ function App() {
 
     
     <>
+
+    <Counter />
       
      <About />
      <Navigation />
