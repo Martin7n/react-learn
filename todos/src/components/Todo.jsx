@@ -17,7 +17,13 @@ const Todo = () => {
           .catch(e => console.log(e))
               }, [])
 
-
+      
+      const changeStatusHandler = (todoId) => {
+        setTodos(
+          currentState => 
+            currentState.map(todo => todo._id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo))
+        
+      };
 
 return (
 
@@ -50,7 +56,7 @@ return (
                       _id ={todo._id}
                       text ={todo.text}
                       isCompleted ={todo.isCompleted}
-                      // changeStatusHandler={changeStatusHandler}
+                      changeStatusHandler={changeStatusHandler}
                       />
 
 

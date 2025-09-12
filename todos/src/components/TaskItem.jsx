@@ -4,20 +4,14 @@ import { useEffect, useState } from "react";
 const TaskItem = ({
                 _id,
                 text,
-                isCompleted}
+                isCompleted,
+                changeStatusHandler}
             ) => {
-    const baseUrl = 'http://localhost:3030/jsonstore/todos'
 
-    const [todos, setTodos] = useState([]);
-
-    useEffect( () => {
-        fetch(baseUrl)
-        .then(response => response.json())
-        .then(data => {setTodos(Object.values(data))
-       })
-        .catch(e => console.log(e))
-            }, [])
-    
+    const changeStatusClick = () => {
+      changeStatusHandler(_id)
+    };
+   
 
     return (
 
@@ -25,7 +19,7 @@ const TaskItem = ({
               <td>{text}</td>
               <td>{isCompleted ? 'completed' : 'NotCompleted'} </td>
               <td class="todo-action">
-                <button className="btn todo-btn">Change status</button>
+                <button onClick={changeStatusClick} className="btn todo-btn">Change status</button>
               </td>
             </tr>
 
