@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from './Starwars.module.css';
 
 
 
@@ -6,6 +7,8 @@ const Starwars = (props) => {
 
     const [heroes, setHeroes] = useState([]);
     const [planets, setPlanets] = useState([]);
+
+    const [isVisible, setIsVisible] = useState(false);
 
     const pplUrl = 'https://swapi.info/api/people'
     const planetsURL = 'https://swapi.info/api/planets'
@@ -42,14 +45,20 @@ const Starwars = (props) => {
     return planet ? planet.name : "Unknown Planet";
     };
 
+    const onClickshowHandler = (e) => {
+
+       setIsVisible(!isVisible);
+
+    }
+
 
     
 
     return (<div>
+        <button onClick={onClickshowHandler}>{isVisible ? "Hide" : "Show SW"}</button>
+        <div className={isVisible ? styles.swarsshow : styles.swars}>
+        
         <h2>SW api results</h2>
-
-    
-
 
         <ul>
             {heroes.map((hero) => (
@@ -70,7 +79,9 @@ const Starwars = (props) => {
 
 
 
-    </div>)
+    </div>
+    </div>
+)
 
 
 };

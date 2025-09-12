@@ -9,7 +9,7 @@ import Todos from './components/Todos'
 import Starwars from './components/Starwars'
 import Counter from './components/Counter'
 import Todo from './components/Todo'
-import Task from './components/Task'
+import Task from './components/notInUseTask'
 
 
 function App() {
@@ -24,7 +24,9 @@ function App() {
     <Navigation />
     <Counter />
 
-    <Task />
+    <Todo />
+
+
 
      <Starwars />
 

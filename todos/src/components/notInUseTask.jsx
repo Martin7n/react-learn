@@ -36,10 +36,10 @@ const Task = () => {
             <ul>
             {todos.map(task =>
 
-            <li key={task._id}>{task.text} </li>)}
+            <li key={task._id}>{task.text} {task.isCompleted ? 'compleded' : 'NotCompleted'} </li>)}
             </ul>
 
-    )
+    )                               
 };
 
 
