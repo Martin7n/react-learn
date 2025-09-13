@@ -12,7 +12,7 @@ export default function Oth(){
  
         No users added yet   
 
-        <div className="table-overlap">
+            <div className="table-overlap">
               <svg
                 aria-hidden="true"
                 focusable="false"

@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import userService from "../services/userService.jsx";
 import UserListItem from "./UserListItem.jsx";
 import Spinner from "./Spinner.jsx";
+import Emptylist from "./Emptylist.jsx";
 
 
 export default function UserListTable(){
@@ -22,7 +23,7 @@ export default function UserListTable(){
         }, []
         );
     
-        console.log(userList)
+        // console.log(userList)
     
 
     return (
@@ -104,6 +105,8 @@ export default function UserListTable(){
                   />
               )
             }
+
+            
             {/* <!-- Table row component --> */}
             {/* <tr>
               <td>
