@@ -6,7 +6,7 @@ export default function Oth(){
     return (
     // Overlap components 
 
-        <div className="loading-shade"> 
+    <div className="loading-shade"> 
         Loading spinner 
     <div className="spinner"></div>  
  

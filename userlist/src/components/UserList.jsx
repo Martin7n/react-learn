@@ -1,7 +1,9 @@
+
 import Search from "./Search";
 import UserListTable from "./UserListTable";
 
 export default function UserList(){
+
 
 
 
@@ -13,7 +15,6 @@ export default function UserList(){
 
             <UserListTable />
       
-
       
         </section>
     )
