@@ -3,12 +3,19 @@ import userService from "../services/userService.jsx";
 import UserListItem from "./UserListItem.jsx";
 import Spinner from "./Spinner.jsx";
 import Emptylist from "./Emptylist.jsx";
+import UserModal from "./UserModal.jsx";
 
 
 export default function UserListTable(){
 
     const [userList, setUserList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
+    const [showInfo, setShowInfo] = useState(false);
+    const [editInfo, setEditInfo] = useState(false);
+    const [delInfo, setDelInfo] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
+
+        
 
 
 
@@ -24,14 +31,50 @@ export default function UserListTable(){
         );
     
         // console.log(userList)
+
+
+      const userInfoClickHandler = async (userId) => {
+          console.log(`userId222: ${userId}`)
+          setSelectedUser(userId);
+
+          console.log(`selected user: ${selectedUser}`)
+          setShowInfo(true);
+          
+          // const user = await userService.getOne(userId)
+
+          // console.log(showInfo)
+
+
+        };
+
+        useEffect(() => {
+    if (selectedUser) {
+        console.log('🟢 selectedUser changed:', selectedUser);
+    }
+}, [selectedUser]);
+
+        const deleteUserClickHandler =  async (userId) => {
+                setEditInfo(true)            
+
+        };
+        const editUserClickHandler =  async (userId) => {
+                setDelInfo(true)
+
+        };
     
 
     return (
 
+      
         <div className="table-wrapper">
 
           {isLoading && <Spinner />}
 
+          {showInfo && selectedUser && <UserModal 
+            onClose={() => setShowInfo(false)}
+            userId={selectedUser}
+          />}
+            
 
         <table className="table">
           <thead>
@@ -101,6 +144,9 @@ export default function UserListTable(){
                             imageUrl={user.imageUrl}
                             lastName={user.lastName}
                             phoneNumber={user.phoneNumber}
+                            onInfoClick={userInfoClickHandler}
+                            onDeleteClick={deleteUserClickHandler}
+                            onEditclick={editUserClickHandler}
 
                   />
               )

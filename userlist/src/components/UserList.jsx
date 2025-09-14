@@ -1,6 +1,8 @@
 
+import Pagination from "./Pagination";
 import Search from "./Search";
 import UserListTable from "./UserListTable";
+import UserModal from "./UserModal";
 
 export default function UserList(){
 
@@ -12,8 +14,15 @@ export default function UserList(){
 
         <section className="card users-container">
             <Search />
+             {/* <UserModal /> */}
+            
 
             <UserListTable />
+
+            <Pagination />
+
+
+         
       
       
         </section>
