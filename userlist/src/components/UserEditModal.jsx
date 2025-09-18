@@ -26,7 +26,6 @@ const UserEditModal = (
     onClose}
 ) => {
 
-    const idd = '7b3143e1-d6df-4e67-bd7e-5f8b03f2fd3f'
 
     const [formValues, setFormValues] = useState(initialFormValues);
     const [isLoading, setIsLoading] = useState(true);
@@ -62,6 +61,11 @@ const UserEditModal = (
         console.log(e.target)
     };
 
+    const saveUser = (e) => {
+        e.preventDefault(); 
+        console.log(formValues.lastName)
+    }
+
     
 
     return (
@@ -92,10 +96,10 @@ const UserEditModal = (
                                 d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3 54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25L114.8 256 9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L205.2 256l105.4 105.4z"
                                 />
                             </svg>
-                            </button>
+                            </button> 
                         </header>
 
-                        <form>
+                        <form onSubmit={saveUser}>
                             <div className="form-row">
                             <div className="form-group">
                                 <label htmlFor="firstName">First name</label>
@@ -276,37 +280,6 @@ const UserEditModal = (
 
 
 };
-
-
-
-// const UserEditModal = () => {
-//   const [formValues, setFormValues] = useState({
-//     firstName: "John",
-//   });
-
-//   const userChange = (e) => {
-//     const { name, value } = e.target;
-//     console.log("change:", name, value);
-//     setFormValues((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   return (
-//     <div>
-//       <form>
-//         <label htmlFor="firstName">First Name:</label>
-//         <input
-//           id="firstName"
-//           name="firstName"
-//           value={formValues.firstName}
-//           onChange={userChange}
-//         />
-//       </form>
-//     </div>
-//   );
-// };
 
 
 export default UserEditModal;
