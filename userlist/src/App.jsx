@@ -14,7 +14,6 @@ function App() {
     <>
     <HeaderSite />
 
-    <UserEditModal />
     <UserList />
           <h1>tmp wrx</h1>
     <FooterSite />

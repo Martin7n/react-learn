@@ -4,6 +4,7 @@ import UserListItem from "./UserListItem.jsx";
 import Spinner from "./Spinner.jsx";
 import Emptylist from "./Emptylist.jsx";
 import UserModal from "./UserModal.jsx";
+import UserEditModal from "./UserEditModal.jsx";
 
 
 export default function UserListTable(){
@@ -21,7 +22,6 @@ export default function UserListTable(){
 
     useEffect(()=> {
             // setIsLoading(true);
-
             userService.getAllUsers()
             .then(usrs => setUserList(usrs))
             .catch(e => console.log(e))
@@ -44,24 +44,30 @@ export default function UserListTable(){
 
           // console.log(showInfo)
 
-
         };
 
         useEffect(() => {
-    if (selectedUser) {
-        console.log('🟢 selectedUser changed:', selectedUser);
-    }
-}, [selectedUser]);
+            if (selectedUser) {
+                console.log('🟢 selectedUser changed:', selectedUser);
+            }
+        }, [selectedUser]);
 
+      
         const deleteUserClickHandler =  async (userId) => {
-                setEditInfo(true)            
+                        setEditInfo(true)
+                        setSelectedUser(userId);            
 
-        };
-        const editUserClickHandler =  async (userId) => {
-                setDelInfo(true)
+                };
+      
+      const editUserClickHandler =  async (userId) => {
+              setEditInfo(true)
+              setSelectedUser(userId);                             
 
-        };
-    
+                };
+
+
+        
+            
 
     return (
 
@@ -72,6 +78,11 @@ export default function UserListTable(){
 
           {showInfo && selectedUser && <UserModal 
             onClose={() => setShowInfo(false)}
+            userId={selectedUser}
+          />}
+
+          {editInfo && selectedUser && <UserEditModal
+            onClose={() => setEditInfo(false)}
             userId={selectedUser}
           />}
             
