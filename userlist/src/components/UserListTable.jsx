@@ -53,7 +53,7 @@ export default function UserListTable(){
         }, [selectedUser]);
 
       
-        const deleteUserClickHandler =  async (userId) => {
+      const deleteUserClickHandler =  async (userId) => {
                         setEditInfo(true)
                         setSelectedUser(userId);            
 
