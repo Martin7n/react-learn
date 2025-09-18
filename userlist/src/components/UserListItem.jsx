@@ -2,7 +2,8 @@ import utils from "../utils/utils";
 
 
 export default function UserListItem(
-        {userId,
+        {
+        userId,
         firstName,
         lastName,
         email,

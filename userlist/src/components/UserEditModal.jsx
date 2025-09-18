@@ -1,83 +1,142 @@
+import { useEffect, useState } from "react";
+import userService from "../services/userService";
 
 
 
-export default function Oth(){
+const initialFormValues = {
+        userId: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        createdAt: "",
+        imageUrl: "",
+}
+
+
+const UserEditModal = (
+) => {
+
+    const idd = '7b3143e1-d6df-4e67-bd7e-5f8b03f2fd3f'
+
+    const [formValues, setFormValues] = useState(initialFormValues);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect( () => {
+    userService.getOne(idd)
+    .then(usr => setFormValues(usr))
+    .catch( err => console.log(err))
+    .finally(() => setIsLoading(false));}, []);
+
+    const userChange = (e) => {
+       const { name, value } = e.target;
+        console.log("Changing", name, "to", value);
+
+        setFormValues((state) => ({
+            ...state,
+            [name]: value
+        }));
+    };
+
+    const blurHand = (e) => {
+        console.log(e.target)
+    };
+
+    // console.log("Rendering form with value:", formValues.firstName);
+       
+      
+//     return (
+//         <input
+//   type="text"
+//   name="firstName"
+//   value={formValues.firstName}
+//   onChange={(e) => {
+//     console.log("Typing:", e.target.value);
+//     setFormValues((prev) => ({
+//       ...prev,
+//       firstName: e.target.value,
+//     }));
+//   }}
+//   style={{ backgroundColor: "lightyellow" }}
+// />
+//     )
+
+    
 
     return (
-      <>
-    // Overlap components 
+       
+        <div className="singleUserEditForm"> 
+         {isLoading ? (
+      <p>Loading...</p>
+        ) : (
 
-    <div classNameName="loading-shade"> 
-        Loading spinner 
-      <div classNameName="spinner"></div>  
- 
-        No users added yet   
+         <div className="table-overlap">
 
-            <div classNameName="table-overlap">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="triangle-exclamation"
-                classNameName="svg-inline--fa fa-triangle-exclamation Table_icon__+HHgn"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"
-                ></path>
-              </svg>
-              <h2>There is no users yet.</h2>
-            </div> 
+"
+            <form>
+                <div>
+                    <label htmlFor="firstName"> First name </label>
+                    <input 
+                    id="firstName" 
+                    name="firstName" 
+                    type="text" 
+                    value={formValues.firstName}
+                    onChange={userChange} 
+                    onBlur={blurHand}
+                    />
+                </div>
+                <div>
 
-        {/* <!-- No content overlap component  --> */}
+                    <label htmlFor="lastName" onChange={userChange}> last name </label>
+                    <input 
+                        name="lastName" 
+                        type="text" 
+                        value={formValues.lastName}
+                        onChange={userChange} 
+                        onBlur={blurHand}
+                        />
+                </div>
+            
+            <label htmlFor="email"> Email </label>
+                <input 
+                    name="email" 
+                    type="text" 
+                    value={formValues.email}
+                    onChange={userChange} 
+                    onBlur={blurHand}
+                        />
+            <label htmlFor="phoneNumber"> Phone Number </label>
+                <input 
+                    name="phoneNumber" 
+                    type="text" 
+                    value={formValues.phoneNumber}
+                    onChange={userChange} 
+                    onBlur={blurHand}
+                    />
+            <label htmlFor="createdAt"> Created at </label>
+                <input 
+                    name="createdAt" 
+                    type="text" 
+                    value={formValues.createdAt}
+                    onChange={userChange} 
+                    onBlur={blurHand}
+                    />
+            <label htmlFor="imageUrl"> Image </label>
 
-        <div classNameName="table-overlap">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="triangle-exclamation"
-                classNameName="svg-inline--fa fa-triangle-exclamation Table_icon__+HHgn"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"
-                ></path>
-              </svg>
-              <h2>Sorry, we couldn't find what you're looking for.</h2>
-            </div> 
-
-        {/* <!-- On error overlap component  --> */}
-
-        <div classNameName="table-overlap">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="triangle-exclamation"
-                classNameName="svg-inline--fa fa-triangle-exclamation Table_icon__+HHgn"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"
-                ></path>
-              </svg>
-              <h2>Failed to fetch</h2>
-            </div>  
-        </div> 
+                <input 
+                    type="text" 
+                    value={formValues.imageUrl}
+                    onChange={userChange} 
+                    onBlur={blurHand}
+                    />
+            
+            <button>Submit </button>
+            </form>
+            </div>)}
+            
 
 
-
-<div className="overlay">
+            <div className="overlay">
       <div className="backdrop"></div>
       <div className="modal">
         <div className="user-container">
@@ -179,9 +238,46 @@ export default function Oth(){
       </div>
     </div> 
 
-</>
+    
 
 
+
+        </div>
 
     )
-}
+
+};
+
+
+
+// const UserEditModal = () => {
+//   const [formValues, setFormValues] = useState({
+//     firstName: "John",
+//   });
+
+//   const userChange = (e) => {
+//     const { name, value } = e.target;
+//     console.log("change:", name, value);
+//     setFormValues((prev) => ({
+//       ...prev,
+//       [name]: value,
+//     }));
+//   };
+
+//   return (
+//     <div>
+//       <form>
+//         <label htmlFor="firstName">First Name:</label>
+//         <input
+//           id="firstName"
+//           name="firstName"
+//           value={formValues.firstName}
+//           onChange={userChange}
+//         />
+//       </form>
+//     </div>
+//   );
+// };
+
+
+export default UserEditModal;

@@ -25,7 +25,7 @@ export default function UserListTable(){
             userService.getAllUsers()
             .then(usrs => setUserList(usrs))
             .catch(e => console.log(e))
-            .finally(setIsLoading(false));
+            .finally(() => setIsLoading(false));
     
         }, []
         );

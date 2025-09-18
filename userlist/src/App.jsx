@@ -5,6 +5,7 @@ import './App.css'
 import HeaderSite from './components/HeaderSite'
 import FooterSite from './components/FooterSite'
 import UserList from './components/UserList'
+import UserEditModal from './components/UserEditModal'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,8 @@ function App() {
   return (
     <>
     <HeaderSite />
+
+    <UserEditModal />
     <UserList />
           <h1>tmp wrx</h1>
     <FooterSite />
