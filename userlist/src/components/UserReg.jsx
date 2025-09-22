@@ -30,6 +30,7 @@ export default function UserReg(){
 
 
     const blurHand  = (e) => {
+    
           console.log(formValues)
     }
 

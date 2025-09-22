@@ -63,7 +63,8 @@ const UserEditModal = (
 
     const saveUser = (e) => {
         e.preventDefault(); 
-        console.log(formValues.lastName)
+        
+        console.log(formValues)
     }
 
     
