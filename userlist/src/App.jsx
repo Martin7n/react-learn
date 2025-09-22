@@ -11,6 +11,7 @@ import UserReg from './components/UserReg'
 import { Routes, Route } from 'react-router-dom';
 import About from './components/About'
 import Navigation from './components/Navigation'
+import Starwars from './components/StarWarsComponents/Starwars'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -19,6 +20,7 @@ function App() {
 
      <HeaderSite />
      <Navigation />
+        <Starwars/>
     <Routes>
                 <Route path="/register" element={   <UserReg />} />
 
@@ -28,7 +30,7 @@ function App() {
                 </Route>
    </Routes>
 
-   
+
 
     <UserList />
           <h1>tmp wrx</h1>
