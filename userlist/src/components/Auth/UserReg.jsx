@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
 
 
 const initialFormData =     {
@@ -14,7 +15,17 @@ export default function UserReg(){
     const [formValues, setFormValues]  = useState(initialFormData);
 
 
-    const saveUser = () => {};
+    const saveUser = (e) => {
+       e.preventDefault()
+       console.log(formValues)
+
+       authService.register(formValues)
+
+
+        //!! (?validate) => pass formValues to service, then? redirect++ OR return error msg.
+
+    };
+
     const userChange = (e) => {
        const { name, value } = e.target;
         

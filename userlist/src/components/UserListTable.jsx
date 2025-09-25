@@ -1,10 +1,10 @@
 import { use, useEffect, useState } from "react";
-import userService from "../services/userService.jsx";
 import UserListItem from "./UserListItem.jsx";
 import Spinner from "./Spinner.jsx";
 import Emptylist from "./Emptylist.jsx";
 import UserModal from "./UserModal.jsx";
 import UserEditModal from "./UserEditModal.jsx";
+import userService from "../services/userService.js";
 
 
 export default function UserListTable(){

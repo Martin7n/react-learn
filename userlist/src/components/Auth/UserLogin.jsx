@@ -29,10 +29,13 @@ export const UserLogin = () => {
 
     };
 
-    const blurHand = (e) => {console.log(formValues)};
+    const blurHand = (e) => {
+        console.log(formValues)
+    };
 
     const loginUserHandler = (e) => {
         e.preventDefault()
+        //!! pass to service, then redirect++ OR return error msg.
         navigate("/")
     };
 
