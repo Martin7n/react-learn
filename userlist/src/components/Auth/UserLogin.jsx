@@ -1,47 +1,46 @@
 import { useEffect, useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 
 const initialFormData =     {
     email: "",
     password: "",
-    repassword: "",
     };
 
-export default function UserReg(){
+export const UserLogin = () => {
+    const navigate = useNavigate();
+
+
 
     const [formValues, setFormValues]  = useState(initialFormData);
-
-
-    const saveUser = () => {};
-    const userChange = (e) => {
-       const { name, value } = e.target;
-        
-       setFormValues((state) => ({
-            ...state,
-            [name]: value
-        })
-    );}
-
-    useEffect(
-        ( ) => {
-
-        }
-    );
-
-
-    const blurHand  = (e) => {
     
-          console.log(formValues)
-    }
+    
+    
+    
+    const userChange = (e) => {
 
-    //!!Todo: simple validations
-    //Todo: BE registration and tokens.
+        const {name, value} = e.target;
+
+        setFormValues(curStateFormValue => 
+        ({...curStateFormValue, [name]:value})
+        )
+
+        console.log(formValues)
+
+    };
+
+    const blurHand = (e) => {console.log(formValues)};
+
+    const loginUserHandler = (e) => {
+        e.preventDefault()
+        navigate("/")
+    };
 
 
-    return (
-        <>
 
-        <form onSubmit={saveUser}>
+    return (<>
+
+        <form onSubmit={loginUserHandler}>
                             
                         {/* <div className="form-row"> */}
                             <div className="form-group long-line">
@@ -80,26 +79,6 @@ export default function UserReg(){
                             </div>
                             </div>
 
-                            <div className="form-group long-line">
-                            <label htmlFor="password">Password</label>
-                            <div className="input-wrapper">
-                                <span>
-                                <i className="fa-solid fa-map"></i>
-                                </span>
-                                <input
-                                id="repassword"
-                                name="repassword"
-                                type="password"
-                                value={formValues.repassword}
-                                onChange={userChange}
-                                onBlur={blurHand}
-                                />
-                            </div>
-                            </div>
-
-
-
-
                             <div id="form-actions">
                             <button id="action-save" className="btn" type="submit">
                                 Save
@@ -111,5 +90,8 @@ export default function UserReg(){
                         {/* </div> */}
                         </form>
                      </>
-    )}
+    )
+};
 
+
+export default UserLogin;

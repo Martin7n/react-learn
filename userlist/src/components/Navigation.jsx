@@ -7,13 +7,11 @@ return (
     <nav>
  <ul className={styles.navUl}> 
 
-    <Link to="/"  className={styles.navLi}>Home</Link>
-    <Link to="/about" className={styles.navLi}>About</Link>
-    <Link to="/register" className={styles.navLi}>Register</Link>
-    <Link to="/login" className={styles.navLi}>Login</Link>
-
-
-    <li className={styles.navLi}>Exit</li>
+   <li className={styles.navLi}><Link to="/" className={styles.navhref}>Home</Link></li>
+   <li className={styles.navLi}><Link to="/about" className={styles.navhref}>About</Link></li>
+   <li className={styles.navLi}><Link to="/register" className={styles.navhref}>Register</Link></li>
+   <li className={styles.navLi}><Link to="/login" className={styles.navhref}>Login</Link></li>
+   <li className={styles.navLi}><Link to="/logout" className={styles.navhref}>Exit</Link></li>
  </ul>
  </nav>
 );

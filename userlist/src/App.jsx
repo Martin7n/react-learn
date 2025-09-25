@@ -6,12 +6,13 @@ import HeaderSite from './components/HeaderSite'
 import FooterSite from './components/FooterSite'
 import UserList from './components/UserList'
 import UserEditModal from './components/UserEditModal'
-import UserReg from './components/UserReg'
 
 import { Routes, Route } from 'react-router-dom';
 import About from './components/About'
 import Navigation from './components/Navigation'
 import Starwars from './components/StarWarsComponents/Starwars'
+import UserReg from './components/Auth/UserReg'
+import UserLogin from './components/Auth/UserLogin'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -23,6 +24,7 @@ function App() {
         <Starwars/>
     <Routes>
                 <Route path="/register" element={   <UserReg />} />
+                <Route path='/login' element={ <UserLogin /> } />
 
 
                 <Route path="/about" element={<About />}>

@@ -7,3 +7,27 @@
 .swarsshow {
   display: block;
 }
+
+.mainInf {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid black;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2em;
+  border-radius: 50px;
+  
+}
+
+
+.someInf {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em;
+    border-radius: 100px;
+
+  
+
+}

@@ -8,8 +8,12 @@
      gap:20px;
 }
 .navLi {
+    display: block; 
    list-style: none;
    font-family:fantasy;
    font-size: 2rem;
 
 }
+
+.navhref {  display: block;
+  padding: 10px 20px; }

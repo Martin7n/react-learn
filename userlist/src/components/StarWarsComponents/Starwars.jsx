@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from './Starwars.module.css';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -60,14 +62,22 @@ const Starwars = (props) => {
         
         <h2>SW api results</h2>
 
-        <ul>
+        <div className={styles.mainInf}>
             {heroes.map((hero) => (
-                <li key={hero.url}>
+                <div className={styles.someInf} key={hero.url}>
+                    
                     {hero.name} with height of {hero.height} — from planet: 
-                    {getPlanetName(hero.homeworld)}
-                </li>
+                    <div>
+                    <Link to={hero.url}>{hero.url}</Link>
+                     </div>
+                    {getPlanetName(hero.homeworld)
+                    
+                  
+                    }
+                    
+                </div>
             ))}
-        </ul>
+        </div>
         <ul> 
             {planets.map(planet => <li key={planet.url}>{planet.name}</li>)}
         </ul>
@@ -76,7 +86,6 @@ const Starwars = (props) => {
             {heroes.map( hero => <li key={hero.url}>{hero.name} with height of : {hero.height} </li>)}
             
         </ul>
-
 
 
     </div>
