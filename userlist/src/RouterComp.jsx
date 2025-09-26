@@ -15,7 +15,7 @@ export const RoutesComp = () => {
                     <Route path="/" element={   <Switchcomponent />} />
                     <Route path="/userlist" element={   <UserHome />} />
                     <Route path="/starwars" element={   <Swhome />} />
-                    <Route path="/cosmic" element={ <Swhome />} />
+                    <Route path="/gameplay" element={ <Swhome />} />
 
 
                     <Route path="/home" element={   <UserHome />} />
