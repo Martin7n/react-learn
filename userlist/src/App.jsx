@@ -7,6 +7,15 @@ import FooterSite from './components/userListComponentPack/FooterSite'
 import UserList from './components/userListComponentPack/UserList'
 import UserEditModal from './components/userListComponentPack/UserEditModal'
 
+
+
+import About from './components/userListComponentPack/About'
+import UserReg from './components/Auth/UserReg'
+import UserLogin from './components/Auth/UserLogin'
+import { UserHome } from './components/userListComponentPack/UserHome';
+import Swhome from './components/StarWarsComponents/Swhome';
+// import Switchcomponent from './components/Switchcomponent/Switchcomponent';
+
 import { Routes, Route } from 'react-router-dom';
 
 import { RoutesComp } from './RouterComp'
@@ -17,7 +26,20 @@ function App() {
   return (
     <>
       <Switchcomponent />
-    <RoutesComp />
+            <Routes>    
+                        {/* <Route path="/" element={   <Switchcomponent />} /> */}
+                        <Route path="/userlist" element={   <UserHome />} />
+                        <Route path="/starwars" element={   <Swhome />} />
+                        <Route path="/cosmic" element={ <Swhome />} />
+    
+    
+                        <Route path="/home" element={   <UserHome />} />
+                        <Route path="/register" element={   <UserReg />} />
+                        <Route path='/login' element={ <UserLogin /> } />
+                        <Route path="/about" element={<About />}>
+                            
+                        </Route>
+       </Routes>
     
     
 

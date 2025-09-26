@@ -11,6 +11,7 @@ export const Switchcomponent = () => {
         <div className={styles.navDiv}> 
 
             <div className={styles.navDivFirst}>
+                <div className={styles.navDiv1}><div className={styles.navhref}>Welcome</div></div>
 
                 <div className={styles.navDiv1}><Link to="/userlist" className={styles.navhref}>Userlist app</Link></div>
                 <div className={styles.navDiv1}><Link to="/starwars" className={styles.navhref}>Starwars app</Link></div>
