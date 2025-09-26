@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Starwars = (props) => {
+const Starwars = () => {
 
     const [heroes, setHeroes] = useState([]);
     const [planets, setPlanets] = useState([]);

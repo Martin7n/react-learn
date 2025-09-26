@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import userService from "../services/userService";
-import utils from "../utils/utils";
+import userService from "../../services/userService";
+import utils from "../../utils/utils";
 
 
 export default function UserModal(

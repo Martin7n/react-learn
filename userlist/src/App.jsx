@@ -2,41 +2,29 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import HeaderSite from './components/HeaderSite'
-import FooterSite from './components/FooterSite'
-import UserList from './components/UserList'
-import UserEditModal from './components/UserEditModal'
+import HeaderSite from './components/userListComponentPack/HeaderSite'
+import FooterSite from './components/userListComponentPack/FooterSite'
+import UserList from './components/userListComponentPack/UserList'
+import UserEditModal from './components/userListComponentPack/UserEditModal'
 
 import { Routes, Route } from 'react-router-dom';
-import About from './components/About'
-import Navigation from './components/Navigation'
-import Starwars from './components/StarWarsComponents/Starwars'
-import UserReg from './components/Auth/UserReg'
-import UserLogin from './components/Auth/UserLogin'
+
+import { RoutesComp } from './RouterComp'
+import Switchcomponent from './components/Switchcomponent/Switchcomponent'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <Switchcomponent />
+    <RoutesComp />
+    
+    
 
-     <HeaderSite />
-     <Navigation />
-        <Starwars/>
-    <Routes>
-                <Route path="/register" element={   <UserReg />} />
-                <Route path='/login' element={ <UserLogin /> } />
+        {/* <UserHome />
+        <Starwars/> */}
 
-
-                <Route path="/about" element={<About />}>
-                    
-                </Route>
-   </Routes>
-
-
-
-    <UserList />
-          <h1>tmp wrx</h1>
-    <FooterSite />
+      
     </>
 
     

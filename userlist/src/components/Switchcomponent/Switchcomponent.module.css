@@ -1,0 +1,41 @@
+
+
+
+
+.navDiv {
+    background-color: rgb(218, 226, 224);
+
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     gap:20px;
+}
+
+.navDivFirst,
+.navDivSecond {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+
+}
+.navDiv1 {
+    display: flex; 
+    list-style: none;
+    font-family:fantasy;
+    font-size: 2rem;
+    border: 1px solid black;
+
+}
+
+.navDiv2 {
+    display: flex; 
+    list-style: none;
+    font-family:fantasy;
+    font-size: 2rem;
+    border: 1px solid black;
+
+}
+
+.navhref {  display: block;
+  padding: 10px 20px; }
