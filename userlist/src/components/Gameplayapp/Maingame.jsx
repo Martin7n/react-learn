@@ -1,30 +1,17 @@
 
+import Headergame from "./Headergame";
 import styles from "./Maingame.module.css"
 
 export const Maingame = () => {
 
 
     return (
+        
         <>
+        
         <div id="box">
 
-            <header>
-           
-            <h1><a className={styles.home} href="#">GamesPlay</a></h1>
-            <nav>
-                <a href="#">All games</a>
-               
-                <div id="user">
-                    <a href="#">Create Game</a>
-                    <a href="#">Logout</a>
-                </div>
-              
-                <div id="guest">
-                    <a href="#">Login</a>
-                    <a href="#">Register</a>
-                </div>
-            </nav>
-        </header>
+            <Headergame />
 
         <main id={styles.maincontent}>
 
@@ -50,11 +37,11 @@ export const Maingame = () => {
                     <div className={styles.rating}>
                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                     </div>
-                    <div className="data-buttons">
+                    <div className={styles.databuttons}>
                         <a href="#" className="btn details-btn">Details</a>
                     </div>
                 </div>
-                <div className={styles.game}>
+                {/* <div className={styles.game}>
                     <div className={styles.imagewrap}>
                         <img src="./images/ZombieLang.png"></img>
                     </div>
@@ -62,7 +49,7 @@ export const Maingame = () => {
                     <div className={styles.rating}>
                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                     </div>
-                    <div className="data-buttons">
+                    <div className={styles.databuttons}>
                         <a href="#" className="btn details-btn">Details</a>
                     </div>
                 </div>
@@ -74,13 +61,13 @@ export const Maingame = () => {
                     <div className={styles.rating}>
                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                     </div>
-                    <div className="data-buttons">
+                    <div className={styles.databuttons}>
                         <a href="#" className="btn details-btn">Details</a>
                     </div>
-                </div>
+                </div> */}
 
                 {/* <!-- Display paragraph: If there is no games  --> */}
-                <p className="no-articles">No games yet</p>
+                <p className={styles.noarticles}>No games yet</p>
             </div>
         </section>
 

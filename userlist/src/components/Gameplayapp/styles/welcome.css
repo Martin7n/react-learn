@@ -1,7 +1,4 @@
-
-
-
-#welcomeworld {
+#welcome-world {
     width: auto;
     padding-right: 15px;
     padding-top: 7em;
@@ -12,7 +9,7 @@
     text-align: center;
 }
 
-#welcomeworld .welcomemessage {
+#welcome-world .welcome-message {
     display: inline-block;
     z-index: 999;
     margin: 0 auto;
@@ -22,7 +19,7 @@
     width: 30%
 }
 
-#welcomeworld>img {
+#welcome-world>img {
     height: auto;
     display: inline-block;
     vertical-align: middle;
@@ -31,7 +28,7 @@
     padding-left: auto;
 }
 
-.welcomemessage h2 {
+.welcome-message h2 {
     color: #ffffff;
     font-size: 300%;
     font-size: 55px;
@@ -44,7 +41,7 @@
     font-family: "Agency FB";
 }
 
-.welcomemessage h3 {
+.welcome-message h3 {
     color: #ffffff;
     font-size: 600%;
     text-shadow: none;
@@ -59,13 +56,13 @@
     font-family: "Agency FB";
 }
 
-#welcomeworld>#homepage {
+#welcome-world>#home-page {
     width: 50% fit-content;
     margin: auto;
     text-align: center;
 }
 
-#homepage {
+#home-page {
     background-color: transparent;
     box-shadow: 0px 0px 40px 0px;
     overflow: hidden;
@@ -88,7 +85,7 @@
     color: rgb(204, 144, 131);
 }
 
-.imagewrap {
+.image-wrap {
     width: 250px;
     height: 250px;
     display: inline-block;
@@ -98,7 +95,7 @@
     text-align: center;
 }
 
-.imagewrap>img {
+.image-wrap>img {
     max-width: 100%;
 }
 
@@ -149,7 +146,7 @@
     padding: 0.9em 1.4em;
 }
 
-.databuttons {
+.data-buttons {
     font-size: 1.4rem;
     padding-top: 20px;
     text-align: center;
@@ -160,7 +157,7 @@
     color: white;
 }
 
-#homepage>h1 {
+#home-page>h1 {
     color: rgb(252, 168, 151);
     text-align: center;
     font-weight: 700;
@@ -168,7 +165,7 @@
     font-family: "Agency FB";
 }
 
-.noarticles {
+.no-articles {
     color: white;
     text-align: center;
     font-weight: 700;
