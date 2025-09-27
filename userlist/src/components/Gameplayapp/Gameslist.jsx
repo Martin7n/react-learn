@@ -1,13 +1,37 @@
 import { useEffect, useState } from "react";
 import styles from "./Maingame.module.css"
 import gamesService from "../../services/gamesService";
+import GamesDetails from "./GameDetails";
 
 
 export const Gameslist = (
     gm,
+    
 ) => {
 
+    const [showDetails, setShowDetails] = useState(false);
+    const [selectedGame, setSelectedGame] = useState(null);
+
+
+
+    const gameDetailsHandler = (e) => {
+
+        setSelectedGame(gm._id)
+
+        gamesService.getOneGame(gm._id)
+        
+        console.log(gm._id)
+        setShowDetails(true)
+    }
+
     return (
+
+        <>
+                    {showDetails && selectedGame && <GamesDetails 
+                            
+                            userId={gm._id}
+                          />}
+
         <div className={styles.game}>
                         <div className={styles.imagewrap}>
                             <img src={gm.imageUrl}></img>
@@ -17,9 +41,11 @@ export const Gameslist = (
                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
                         <div className={styles.databuttons}>
-                            <a href="#" className="btn details-btn">Details</a>
+                            <a onClick={gameDetailsHandler} className="btn details-btn">Details</a>
                         </div>
                     </div>
+
+                 </>   
 
 
 
