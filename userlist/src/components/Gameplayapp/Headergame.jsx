@@ -1,7 +1,11 @@
+
 import styles from "./Headergame.module.css"
 
 
 export const Headergame = () => {
+
+
+
 
     return (
         <header>

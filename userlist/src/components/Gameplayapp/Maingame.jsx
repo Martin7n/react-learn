@@ -1,8 +1,22 @@
 
+import { useEffect, useState } from "react";
+import Gameslist from "./Gameslist";
 import Headergame from "./Headergame";
 import styles from "./Maingame.module.css"
+import gamesService from "../../services/gamesService";
 
 export const Maingame = () => {
+
+
+    
+
+    const [games, setGames] = useState([]);
+    
+    useEffect( () => 
+           { gamesService.getAllgames()
+            .then(games => setGames(games))}, []
+    
+        );
 
 
     return (
@@ -27,6 +41,9 @@ export const Maingame = () => {
 
             <div id={styles.homepage}>
                 <h1>Latest Games</h1>
+
+           { games.map(gm => <Gameslist key={gm._id} {...gm}/>)}
+                
 
                 {/* <!-- Display div: with information about every game (if any) --> */}
                 <div className={styles.game}>
