@@ -64,10 +64,7 @@ export default function UserListTable(){
               setSelectedUser(userId);                             
 
                 };
-
-
-        
-            
+    
 
     return (
 

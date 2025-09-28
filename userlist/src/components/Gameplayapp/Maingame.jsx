@@ -1,22 +1,46 @@
 
 import { useEffect, useState } from "react";
-import Gameslist from "./Gameslist";
+import GameslistItems from "./GameslistItems";
 import Headergame from "./Headergame";
 import styles from "./Maingame.module.css"
 import gamesService from "../../services/gamesService";
+import GamesDetails from "./GameDetails";
 
 export const Maingame = () => {
 
 
     
 
-    const [games, setGames] = useState([])
-    
-    useEffect( () => 
-           { gamesService.getLatestGame()
-            .then(games => setGames(games))}, []
-    
-        );
+    const [games, setGames] = useState([]);
+    const [selectedGameId, setSelectedGameId] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [showDetails, setShowDetails] = useState(false);
+
+    // useEffect( () => 
+    //        { setLoading(true);
+    //         gamesService.getLatestGame()
+    //         .then(games => setGames(games))
+    //         .catch(e => console.log(e.message))
+    //         .finally(setLoading(false))
+    //     }, 
+    //         []
+    // );
+
+    useEffect(() => {
+            setLoading(true);
+
+            setTimeout(() => {
+                gamesService.getLatestGame()
+                .then((games) => setGames(games))
+                .catch((err) => console.error("Error fetching games:", err))
+                .finally(() => setLoading(false));
+            }, 2000);  
+            }, []);
+
+    const handleSelectGame = (id) => {
+    setSelectedGameId(id);
+    };
+
 
 
     return (
@@ -33,58 +57,39 @@ export const Maingame = () => {
 
         <section id={styles.welcomeworld}>
 
+            {loading && (
+                    <div className={styles.noarticles} >Loading...</div>
+            )}
+
+            {!loading && games.length === 0 && (
+            <p className={styles.noarticles}>No games yet</p>
+             )}
+
+           
+
             <div className={styles.welcomemessage}>
                 <h2>ALL new games are</h2>
                 <h3>Only in GamesPlay</h3>
             </div>
             <img src="./public/images/four_slider_img01.png" alt="hero"></img>
 
+             {selectedGameId && (
+                 <GamesDetails
+                    gameId={selectedGameId}
+                    onClose={() => setSelectedGameId(null)}
+                />
+             )}
+
             <div id={styles.homepage}>
                 <h1>Latest Games</h1>
 
-           { games.map(gm => <Gameslist key={gm._id} {...gm}/>)}
+           { games.map(game => <GameslistItems 
+                    key={game._id} 
+                    game={game}
+                    onSelect={() => handleSelectGame(game._id)}     
+           />)}
                 
-
-                {/* <!-- Display div: with information about every game (if any) --> */}
-                {/* <div className={styles.game}>
-                    <div className={styles.imagewrap}>
-                        <img src="./images/CoverFire.png"></img>
-                    </div>
-                    <h3>Cover Fire</h3>
-                    <div className={styles.rating}>
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <div className={styles.databuttons}>
-                        <a href="#" className="btn details-btn">Details</a>
-                    </div>
-                </div> */}
-                {/* <div className={styles.game}>
-                    <div className={styles.imagewrap}>
-                        <img src="./images/ZombieLang.png"></img>
-                    </div>
-                    <h3>Zombie Lang</h3>
-                    <div className={styles.rating}>
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <div className={styles.databuttons}>
-                        <a href="#" className="btn details-btn">Details</a>
-                    </div>
-                </div>
-                <div className={styles.game}>
-                    <div className={styles.imagewrap}>
-                        <img src="./images/MineCraft.png"></img>
-                    </div>
-                    <h3>MineCraft</h3>
-                    <div className={styles.rating}>
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <div className={styles.databuttons}>
-                        <a href="#" className="btn details-btn">Details</a>
-                    </div>
-                </div> */}
-
-                {/* <!-- Display paragraph: If there is no games  --> */}
-                <p className={styles.noarticles}>No games yet</p>
+                
             </div>
         </section>
 
