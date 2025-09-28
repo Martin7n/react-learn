@@ -1,5 +1,6 @@
 
 import styles from "./Headergame.module.css"
+import "./styles/navigation.css"
 
 
 export const Headergame = () => {

@@ -5,11 +5,11 @@ import Headergame from "./Headergame";
 import styles from "./Maingame.module.css"
 import gamesService from "../../services/gamesService";
 import GamesDetails from "./GameDetails";
+import { Outlet } from "react-router-dom";
+
 
 export const Maingame = () => {
 
-
-    
 
     const [games, setGames] = useState([]);
     const [selectedGameId, setSelectedGameId] = useState(null);
@@ -46,6 +46,7 @@ export const Maingame = () => {
     return (
         
         <>
+        {/* <Outlet /> */}
         
         <div id="box">
 

@@ -21,6 +21,7 @@ import { Routes, Route } from 'react-router-dom';
 import { RoutesComp } from './RouterComp'
 import Switchcomponent from './components/Switchcomponent/Switchcomponent'
 import Maingame from './components/Gameplayapp/Maingame'
+import GameEdit from './components/Gameplayapp/GameEdit'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -32,6 +33,14 @@ function App() {
                         <Route path="/userlist" element={   <UserHome />} />
                         <Route path="/starwars" element={   <Swhome />} />
                         <Route path="/gameplay" element={ <Maingame />} />
+                        <Route path="/games" element={ <Maingame />} />
+                        {/* <Route path="/gameplay/create" element={<GameCreate />} /> */}
+                        <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
+
+                        {/* <Route path="/gameplay" element={<Maingame />}>
+                          <Route path="create" element={<GameCreate />} />
+                          <Route path="edit/:gameId" element={<GameEdit />} />
+                        </Route> */}
     
     
                         <Route path="/home" element={   <UserHome />} />

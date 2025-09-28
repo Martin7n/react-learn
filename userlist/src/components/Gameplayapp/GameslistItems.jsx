@@ -35,4 +35,4 @@ export const GameslistItems = ({ game, onSelect  })=> {
 
 };
 
-export default Gameslist;
+export default GameslistItems ;
