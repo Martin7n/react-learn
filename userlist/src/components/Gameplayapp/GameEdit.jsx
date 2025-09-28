@@ -20,12 +20,6 @@ const GameEdit = () => {
         });
 
 
-        // useEffect(() => {
-        // gamesService.getOneGame(gameId)
-        // .then(setGameData)
-        // .catch(err => console.error('Error fetching game:', err));
-        // }, [gameId]);
-
         useEffect(() => {
         gamesService.getOneGame(gameId).then((game) => {
         setFormData({
@@ -33,7 +27,7 @@ const GameEdit = () => {
             category: game.category || '',
             maxLevel: game.maxLevel || '',
             imageUrl: game.imageUrl || '',
-            summary: game.summary || '' // assuming `text` is your summary
+            summary: game.summary || ''
         });
         });
         }, [gameId]);
