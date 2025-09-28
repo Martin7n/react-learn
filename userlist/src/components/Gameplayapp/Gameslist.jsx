@@ -14,22 +14,29 @@ export const Gameslist = (
 
 
 
-    const gameDetailsHandler = (e) => {
-
-        setSelectedGame(gm._id)
-
-        gamesService.getOneGame(gm._id)
+    const gameDetailsHandler = async (gameId) => {
+        if (gameId){console.log(`selectted gameID => ${gameId}`)}
         
-        console.log(gm._id)
+        setSelectedGame(gameId);
+       
         setShowDetails(true)
     }
 
+    useEffect(() => {
+            if (selectedGame) {
+                console.log('🟢 selectedGame changed:', selectedGame);
+            }
+        }, [selectedGame]);
+
+         
+
+    
     return (
 
         <>
                     {showDetails && selectedGame && <GamesDetails 
                             
-                            userId={gm._id}
+                            gameId={gm._id}
                           />}
 
         <div className={styles.game}>

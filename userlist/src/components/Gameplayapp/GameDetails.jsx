@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
+import gamesService from "../../services/gamesService";
+import './styles/details.css'
 
 
-const GamesDetails = (showInfo ) => {
+const GamesDetails = ({gameId, showInfo}) => {
+
+    const [gameDetails, setGameDetails] = useState({})
+
+    console.log(`gameId in details => ${gameId}`)
+
+
+    useEffect( () =>
+        {gamesService.getOneGame(gameId).then(
+          (obj) => setGameDetails(obj)
+        )}, [gameId]
+
+    );
     
 
 
@@ -12,17 +27,14 @@ const GamesDetails = (showInfo ) => {
 
 
                 <div className="game-header">
-                    <img className="game-img" src="images/MineCraft.png" />
+                    <img className="game-img" src={gameDetails.imageUrl} />
                     <h1>Bright</h1>
                     <span className="levels">MaxLevel: 4</span>
-                    <p className="type">Action, Crime, Fantasy</p>
+                    <p className="type">{gameDetails.category} </p>
                 </div>
 
                 <p className="text">
-                    Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work
-                    with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy
-                    creatures live side by side with humans. A human cop is forced
-                    to work with an Orc to find a weapon everyone is prepared to kill for.
+                    {gameDetails.text}
                 </p>
 
                 {/* <!-- Bonus ( for Guests and Users ) --> */}

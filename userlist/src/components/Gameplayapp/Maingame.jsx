@@ -10,10 +10,10 @@ export const Maingame = () => {
 
     
 
-    const [games, setGames] = useState([]);
+    const [games, setGames] = useState([])
     
     useEffect( () => 
-           { gamesService.getAllgames()
+           { gamesService.getLatestGame()
             .then(games => setGames(games))}, []
     
         );
@@ -37,7 +37,7 @@ export const Maingame = () => {
                 <h2>ALL new games are</h2>
                 <h3>Only in GamesPlay</h3>
             </div>
-            <img src="./images/four_slider_img01.png" alt="hero"></img>
+            <img src="./public/images/four_slider_img01.png" alt="hero"></img>
 
             <div id={styles.homepage}>
                 <h1>Latest Games</h1>
@@ -46,7 +46,7 @@ export const Maingame = () => {
                 
 
                 {/* <!-- Display div: with information about every game (if any) --> */}
-                <div className={styles.game}>
+                {/* <div className={styles.game}>
                     <div className={styles.imagewrap}>
                         <img src="./images/CoverFire.png"></img>
                     </div>
@@ -57,7 +57,7 @@ export const Maingame = () => {
                     <div className={styles.databuttons}>
                         <a href="#" className="btn details-btn">Details</a>
                     </div>
-                </div>
+                </div> */}
                 {/* <div className={styles.game}>
                     <div className={styles.imagewrap}>
                         <img src="./images/ZombieLang.png"></img>
