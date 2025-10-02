@@ -22,6 +22,9 @@ import { RoutesComp } from './RouterComp'
 import Switchcomponent from './components/Switchcomponent/Switchcomponent'
 import Maingame from './components/Gameplayapp/Maingame'
 import GameEdit from './components/Gameplayapp/GameEdit'
+import Login from './components/Gameplayapp/AuthPages/Login'
+import Register from './components/Gameplayapp/AuthPages/Register'
+import Logout from './components/Gameplayapp/AuthPages/Logout'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -36,6 +39,12 @@ function App() {
                         <Route path="/games" element={ <Maingame />} />
                         {/* <Route path="/gameplay/create" element={<GameCreate />} /> */}
                         <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
+                        <Route path="/gameplay/login" element={<Login />} />
+                        <Route path="/gameplay/register" element={<Register />} />
+                        <Route path="/gameplay/logout" element={<Logout />} />
+
+
+
 
                         {/* <Route path="/gameplay" element={<Maingame />}>
                           <Route path="create" element={<GameCreate />} />
