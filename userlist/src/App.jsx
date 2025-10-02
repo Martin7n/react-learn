@@ -8,10 +8,6 @@ import UserList from './components/userListComponentPack/UserList'
 import UserEditModal from './components/userListComponentPack/UserEditModal'
 
 
-
-import About from './components/userListComponentPack/About'
-import UserReg from './components/Auth/UserReg'
-import UserLogin from './components/Auth/UserLogin'
 import { UserHome } from './components/userListComponentPack/UserHome';
 import Swhome from './components/StarWarsComponents/Swhome';
 // import Switchcomponent from './components/Switchcomponent/Switchcomponent';
@@ -24,13 +20,27 @@ import Maingame from './components/Gameplayapp/Maingame'
 import GameEdit from './components/Gameplayapp/GameEdit'
 import Login from './components/Gameplayapp/AuthPages/Login'
 import Register from './components/Gameplayapp/AuthPages/Register'
-import Logout from './components/Gameplayapp/AuthPages/Logout'
+import { AuthContext } from './components/Gameplayapp/Context/authContext'
+
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [auth, setAuth] = useState({});
+
+
+  const loginSubmitHandler = (values) => {
+      console.log(values)
+
+  };
+
+  const regSubmitHandler = (values) => {
+      console.log(values)
+    };
 
   return (
     <>
       <Switchcomponent />
+      <AuthContext.Provider value={{ username: 'NamedUser' }}>
             <Routes>    
                         {/* <Route path="/" element={   <Switchcomponent />} /> */}
                         <Route path="/userlist" element={   <UserHome />} />
@@ -39,31 +49,16 @@ function App() {
                         <Route path="/games" element={ <Maingame />} />
                         {/* <Route path="/gameplay/create" element={<GameCreate />} /> */}
                         <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
-                        <Route path="/gameplay/login" element={<Login />} />
-                        <Route path="/gameplay/register" element={<Register />} />
-                        <Route path="/gameplay/logout" element={<Logout />} />
+                        <Route path="/gameplay/login" element={<Login loginSubmitHandler={loginSubmitHandler}/>} />
+                        <Route path="/gameplay/register" element={<Register regSubmitHandler={regSubmitHandler}/>} />
+                         <Route path="/gameplay/logout" element={<Login />} />
 
-
-
-
-                        {/* <Route path="/gameplay" element={<Maingame />}>
-                          <Route path="create" element={<GameCreate />} />
-                          <Route path="edit/:gameId" element={<GameEdit />} />
-                        </Route> */}
-    
-    
-                        <Route path="/home" element={   <UserHome />} />
-                        <Route path="/register" element={   <UserReg />} />
-                        <Route path='/login' element={ <UserLogin /> } />
-                        <Route path="/about" element={<About />}>
-                            
-                        </Route>
+                    
        </Routes>
+       </AuthContext.Provider>
     
     
 
-        {/* <UserHome />
-        <Starwars/> */}
 
       
     </>

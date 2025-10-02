@@ -21,8 +21,8 @@ export const Headergame = () => {
                         </div>
                       
                         <div id="guest">
-                            <Link to="/login">Login</Link>
-                            <Link to="/register">Register</Link>
+                            <Link to="/gameplay/login">Login</Link>
+                            <Link to="/gameplay/register">Register</Link>
                         </div>
                     </nav>
                     </header>

@@ -1,128 +1,128 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import authService from "../../services/authService";
+// import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import authService from "../../services/authService";
 
 
-const initialFormData =     {
-    email: "",
-    password: "",
-    repassword: "",
-    };
+// const initialFormData =     {
+//     email: "",
+//     password: "",
+//     repassword: "",
+//     };
 
-export default function UserReg(){
-    const navigate = useNavigate();
+// export default function UserReg(){
+//     const navigate = useNavigate();
 
-    const [formValues, setFormValues]  = useState(initialFormData);
-
-
-    const saveUser = (e) => {
-       e.preventDefault()
-       console.log(formValues)
-
-       authService.register(formValues)
+//     const [formValues, setFormValues]  = useState(initialFormData);
 
 
-        //!! (?validate) => pass formValues to service, then? redirect++ OR return error msg.
+//     const saveUser = (e) => {
+//        e.preventDefault()
+//        console.log(formValues)
 
-    };
+//        authService.register(formValues)
 
-    const userChange = (e) => {
-       const { name, value } = e.target;
+
+//         //!! (?validate) => pass formValues to service, then? redirect++ OR return error msg.
+
+//     };
+
+//     const userChange = (e) => {
+//        const { name, value } = e.target;
         
-       setFormValues((state) => ({
-            ...state,
-            [name]: value
-        })
-    );}
+//        setFormValues((state) => ({
+//             ...state,
+//             [name]: value
+//         })
+//     );}
 
-    useEffect(
-        ( ) => {
+//     useEffect(
+//         ( ) => {
 
-        }
-    );
+//         }
+//     );
 
 
-    const blurHand  = (e) => {
+//     const blurHand  = (e) => {
     
-          console.log(formValues)
-    }
+//           console.log(formValues)
+//     }
 
-    //!!Todo: simple validations
-    //Todo: BE registration and tokens.
+//     //!!Todo: simple validations
+//     //Todo: BE registration and tokens.
 
 
-    return (
-        <>
+//     return (
+//         <>
 
-        <form onSubmit={saveUser}>
+//         <form onSubmit={saveUser}>
                             
-                        {/* <div className="form-row"> */}
-                            <div className="form-group long-line">
-                                <label htmlFor="email">Email</label>
-                                <div className="input-wrapper">
-                                <span>
-                                    <i className="fa-solid fa-envelope"></i>
-                                </span>
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="text"
-                                    value={formValues.email}
-                                    onChange={userChange}
-                                    onBlur={blurHand}
-                                />
-                                </div>
-                            </div>
+//                         {/* <div className="form-row"> */}
+//                             <div className="form-group long-line">
+//                                 <label htmlFor="email">Email</label>
+//                                 <div className="input-wrapper">
+//                                 <span>
+//                                     <i className="fa-solid fa-envelope"></i>
+//                                 </span>
+//                                 <input
+//                                     id="email"
+//                                     name="email"
+//                                     type="text"
+//                                     value={formValues.email}
+//                                     onChange={userChange}
+//                                     onBlur={blurHand}
+//                                 />
+//                                 </div>
+//                             </div>
 
                             
 
-                            <div className="form-group long-line">
-                            <label htmlFor="password">Password</label>
-                            <div className="input-wrapper">
-                                <span>
-                                <i className="fa-solid fa-map"></i>
-                                </span>
-                                <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                value={formValues.password}
-                                onChange={userChange}
-                                onBlur={blurHand}
-                                />
-                            </div>
-                            </div>
+//                             <div className="form-group long-line">
+//                             <label htmlFor="password">Password</label>
+//                             <div className="input-wrapper">
+//                                 <span>
+//                                 <i className="fa-solid fa-map"></i>
+//                                 </span>
+//                                 <input
+//                                 id="password"
+//                                 name="password"
+//                                 type="password"
+//                                 value={formValues.password}
+//                                 onChange={userChange}
+//                                 onBlur={blurHand}
+//                                 />
+//                             </div>
+//                             </div>
 
-                            <div className="form-group long-line">
-                            <label htmlFor="password">Password</label>
-                            <div className="input-wrapper">
-                                <span>
-                                <i className="fa-solid fa-map"></i>
-                                </span>
-                                <input
-                                id="repassword"
-                                name="repassword"
-                                type="password"
-                                value={formValues.repassword}
-                                onChange={userChange}
-                                onBlur={blurHand}
-                                />
-                            </div>
-                            </div>
-
-
+//                             <div className="form-group long-line">
+//                             <label htmlFor="password">Password</label>
+//                             <div className="input-wrapper">
+//                                 <span>
+//                                 <i className="fa-solid fa-map"></i>
+//                                 </span>
+//                                 <input
+//                                 id="repassword"
+//                                 name="repassword"
+//                                 type="password"
+//                                 value={formValues.repassword}
+//                                 onChange={userChange}
+//                                 onBlur={blurHand}
+//                                 />
+//                             </div>
+//                             </div>
 
 
-                            <div id="form-actions">
-                            <button id="action-save" className="btn" type="submit">
-                                Save
-                            </button>
-                            <button id="action-cancel" className="btn" type="button">
-                                Cancel
-                            </button>
-                            </div>
-                        {/* </div> */}
-                        </form>
-                     </>
-    )}
+
+
+//                             <div id="form-actions">
+//                             <button id="action-save" className="btn" type="submit">
+//                                 Save
+//                             </button>
+//                             <button id="action-cancel" className="btn" type="button">
+//                                 Cancel
+//                             </button>
+//                             </div>
+//                         {/* </div> */}
+//                         </form>
+//                      </>
+//     )}
 
