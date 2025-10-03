@@ -12,7 +12,7 @@ import { UserHome } from './components/userListComponentPack/UserHome';
 import Swhome from './components/StarWarsComponents/Swhome';
 // import Switchcomponent from './components/Switchcomponent/Switchcomponent';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import { RoutesComp } from './RouterComp'
 import Switchcomponent from './components/Switchcomponent/Switchcomponent'
@@ -25,31 +25,46 @@ import authService from './services/authService'
 
 
 function App() {
+    const navigate = useNavigate();
+
     const [count, setCount] = useState(0);
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(() =>{
+     return {};
+    }
+  );
 
     const loginSubmitHandler = async (values) => {
+        //! error handling and validation!
 
         console.log('loginSubmitHandler')
         console.log(values)
         const result = await authService.login(
           values
+        )
+        const data = await result.json();
+        
+        setAuth(data)
 
-        );
-
-        console.log(result)
+         
+        navigate("gameplay/") 
+        
+        // console.log(await result.json())
   };
 
   const regSubmitHandler = async (values) => {
-        console.log('loginSubmitHandler')
+        console.log('regSubmitHandler')
         console.log(values)
-
+        //! error handling and validation!
         const result = await authService.register(values)
+        const data = await result.json()
 
+        //! server login
+        setAuth(data);
         console.log(result)
 
-  };
 
+
+  };
 
     const values = {
         loginSubmitHandler,
