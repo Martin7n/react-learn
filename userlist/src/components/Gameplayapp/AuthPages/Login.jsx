@@ -1,35 +1,30 @@
-import { useEffect, useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import "../styles/login-register.css"
+import useForm from "../../../hooks/useForm";
+import AuthContext from "../Context/authContext";
 
 
-const initialFormData =     {
-    email: "",
-    password: "",
+const LoginFormKyes =     {
+    Email: "email",
+    Password: "password",
     };
 
 
  const Login = () => {
-    const navigate = useNavigate();
+    // const [formValues, setFormValues]  = useState(initialFormData);
+    const {loginSubmitHandler} = useContext(AuthContext)
 
-    const [formValues, setFormValues]  = useState(initialFormData);
-    
-    const userChange = (e) => {
-        const {name, value} = e.target;
-       
-        setFormValues(state => ({...state, [name]:value}))
-        
-        console.log(value)
-    };
+    const { values, onChange, onSubmit} = useForm(loginSubmitHandler, {
+        [LoginFormKyes.Email]: '', 
+        [LoginFormKyes.Password]: ''}
+    );
+
 
     // blurLog..just in case
     const blurHand = (e) => { 
-        console.log(formValues)
+        console.log(LoginFormKyes)
     };
     
-    
-    const onSubmit = (e) => {};
-
 
     return (
         <>
@@ -43,10 +38,10 @@ const initialFormData =     {
                         <input 
                             type="email" 
                             id="email" 
-                            name="email" 
+                            name={LoginFormKyes.Email}
                             placeholder="Sokka@gmail.com"
-                            value={formValues.email}
-                            onChange={userChange}
+                            value={values[LoginFormKyes.Email]}
+                            onChange={onChange}
                             onBlur={blurHand}
                             />
 
@@ -54,9 +49,9 @@ const initialFormData =     {
                         <input 
                             type="password" 
                             id="login-password" 
-                            name="password"
-                            value={formValues.password}
-                            onChange={userChange}
+                            name={LoginFormKyes.Password}
+                            value={values[LoginFormKyes.Password]}
+                            onChange={onChange}
                             onBlur={blurHand}
                             />
                           

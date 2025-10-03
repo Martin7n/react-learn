@@ -21,26 +21,42 @@ import GameEdit from './components/Gameplayapp/GameEdit'
 import Login from './components/Gameplayapp/AuthPages/Login'
 import Register from './components/Gameplayapp/AuthPages/Register'
 import { AuthContext } from './components/Gameplayapp/Context/authContext'
+import authService from './services/authService'
 
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [auth, setAuth] = useState({});
+    const [count, setCount] = useState(0);
+    const [auth, setAuth] = useState({});
 
+    const loginSubmitHandler =  (values) => {
 
-  const loginSubmitHandler = (values) => {
+            console.log('loginSubmitHandler')
+
       console.log(values)
+          // const result = await authService.login(
+          // values.email, 
+          // values.password
+        // );
+
 
   };
 
+
+    const values = {
+        loginSubmitHandler,
+        email: auth.email,
+        password: auth.password,
+        isAuthenticated: !!auth.email,    
+      }
+
   const regSubmitHandler = (values) => {
-      console.log(values)
+        console.log(values)
     };
 
   return (
     <>
       <Switchcomponent />
-      <AuthContext.Provider value={{ username: 'NamedUser' }}>
+      <AuthContext.Provider value={values}>
             <Routes>    
                         {/* <Route path="/" element={   <Switchcomponent />} /> */}
                         <Route path="/userlist" element={   <UserHome />} />
@@ -49,9 +65,9 @@ function App() {
                         <Route path="/games" element={ <Maingame />} />
                         {/* <Route path="/gameplay/create" element={<GameCreate />} /> */}
                         <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
-                        <Route path="/gameplay/login" element={<Login loginSubmitHandler={loginSubmitHandler}/>} />
+                        <Route path="/gameplay/login" element={<Login />} />
                         <Route path="/gameplay/register" element={<Register regSubmitHandler={regSubmitHandler}/>} />
-                         <Route path="/gameplay/logout" element={<Login />} />
+                        <Route path="/gameplay/logout" element={<Login />} />
 
                     
        </Routes>
