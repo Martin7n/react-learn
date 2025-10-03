@@ -4,7 +4,7 @@ const baseUrl = 'http://localhost:3030/';
 
 
 const authService = {
-    async  register(formData){
+      register(formData){
         const reqUrl = `${baseUrl}users/register`
         console.log(reqUrl, formData)
         const {email, password} = formData;
@@ -17,18 +17,17 @@ const authService = {
             body: JSON.stringify({email, password})
         };
 
-        const response = await fetch(reqUrl, options);
+        return fetch(reqUrl, options);
 
-        if (response.ok != true){
-            const error = await response.json();
-            throw new Error(error.message);
-        }
+        // const response =  fetch(reqUrl, options);
 
-        const data = await response.json();
-        console.log(data)
+        // if (response.ok != true){
+        //     const error =  response.json();
+        //     throw new Error(error.message);
+        // }
 
-
-
+        // const data =  response.json();
+        // console.log(data)
         
     },
 
@@ -36,6 +35,7 @@ const authService = {
     async login(formData){
 
         const {email, password} = formData;
+        console.log(email, password)
 
         const reqUrl = `${baseUrl}users/login`
         const options = {
@@ -43,10 +43,11 @@ const authService = {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email, password})
+            body: JSON.stringify(formData)
         }
 
-    const response = await fetch(reqUrl, options);
+    // const response =  fetch(reqUrl, options);
+    return fetch(reqUrl, options);
 
         
     },

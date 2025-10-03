@@ -28,30 +28,38 @@ function App() {
     const [count, setCount] = useState(0);
     const [auth, setAuth] = useState({});
 
-    const loginSubmitHandler =  (values) => {
+    const loginSubmitHandler = async (values) => {
 
-            console.log('loginSubmitHandler')
+        console.log('loginSubmitHandler')
+        console.log(values)
+        const result = await authService.login(
+          values
 
-      console.log(values)
-          // const result = await authService.login(
-          // values.email, 
-          // values.password
-        // );
+        );
 
+        console.log(result)
+  };
+
+  const regSubmitHandler = async (values) => {
+        console.log('loginSubmitHandler')
+        console.log(values)
+
+        const result = await authService.register(values)
+
+        console.log(result)
 
   };
 
 
     const values = {
         loginSubmitHandler,
+        regSubmitHandler,
         email: auth.email,
         password: auth.password,
         isAuthenticated: !!auth.email,    
       }
 
-  const regSubmitHandler = (values) => {
-        console.log(values)
-    };
+
 
   return (
     <>
@@ -66,7 +74,7 @@ function App() {
                         {/* <Route path="/gameplay/create" element={<GameCreate />} /> */}
                         <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
                         <Route path="/gameplay/login" element={<Login />} />
-                        <Route path="/gameplay/register" element={<Register regSubmitHandler={regSubmitHandler}/>} />
+                        <Route path="/gameplay/register" element={<Register />} />
                         <Route path="/gameplay/logout" element={<Login />} />
 
                     

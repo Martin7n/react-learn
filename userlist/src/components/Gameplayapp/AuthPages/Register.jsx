@@ -1,42 +1,36 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import "../styles/login-register.css"
+import useForm from "../../../hooks/useForm";
+import AuthContext from "../Context/authContext";
 
 
-
-const initialFormData =     {
-    email: "",
-    password: "",
-    confirmPassword: "",
-    
+const RegFormKyes =     {
+    Email: "email",
+    Password: "password",
+    ConfirmPassword: 'repass'
     };
 
 
 const Register = () => {
 
-    const [formValues, setFormValues] = useState(initialFormData);
-
-
-    const onSubmit = (e) => {
-    };
-
-    const userChange = (e) => {
-        const {name, value} = e.target;
-        console.log(e.target)
-
-        
-        setFormValues(formVals => 
-            ({...formVals, [name]:value})
-        );
-        console.log(formValues)
-        
-    };
+    const {regSubmitHandler} = useContext(AuthContext)
     
-    const blurHand = (e) => {};
+    const { values, onChange, onSubmit} = useForm(regSubmitHandler, {
+            [RegFormKyes.Email]: '', 
+            [RegFormKyes.Password]: ''}
+        );
+
+
+    // blurLog..just in case
+    const blurHand = (e) => { 
+        console.log(RegFormKyes)
+    };
 
 
 
     return (
         <section id="register-page" className="contentAuth">
-            <form id="register">
+            <form id="register" onSubmit={onSubmit}>
                 <div className="container">
                     <div className="brandLogo"></div>
                     <h1>Register</h1>
@@ -45,20 +39,20 @@ const Register = () => {
                     <input 
                         type="email" 
                         id="email" 
-                        name="email" 
-                        placeholder="maria@email.com"
-                        value={formValues.email}
-                        onChange={userChange}
+                        name={RegFormKyes.Email}
+                        placeholder="Sokka@gmail.com"
+                        value={values[RegFormKyes.Email]}
+                        onChange={onChange}
                         onBlur={blurHand}
                         />
 
                     <label htmlFor="pass">Password:</label>
                     <input 
                         type="password" 
-                        name="password" 
-                        id="register-password"
-                        value={formValues.password}
-                        onChange={userChange}
+                        name={RegFormKyes.Password}
+                        placeholder="Sokka@gmail.com"
+                        value={values[RegFormKyes.Password]}
+                        onChange={onChange}
                         onBlur={blurHand}
                         />
 
@@ -67,8 +61,8 @@ const Register = () => {
                         type="password" 
                         name="confirmPassword" 
                         id="confirm-password"
-                        value={formValues.confirmPassword}
-                        onChange={userChange}
+                        value={values[RegFormKyes.ConfirmPassword]}
+                        onChange={onChange}
                         onBlur={blurHand}
                         />
 
