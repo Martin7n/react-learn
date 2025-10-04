@@ -32,7 +32,7 @@ export const Maingame = () => {
             setLoading(true);
 
             setTimeout(() => {
-                gamesService.getLatestGame()
+                gamesService.getAllgames()
                 .then((games) => setGames(games))
                 .catch((err) => console.error("Error fetching games:", err))
                 .finally(() => setLoading(false));
