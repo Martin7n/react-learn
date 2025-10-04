@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
-import HeaderSite from './components/userListComponentPack/HeaderSite'
-import FooterSite from './components/userListComponentPack/FooterSite'
-import UserList from './components/userListComponentPack/UserList'
-import UserEditModal from './components/userListComponentPack/UserEditModal'
+// import HeaderSite from './components/userListComponentPack/HeaderSite'
+// import FooterSite from './components/userListComponentPack/FooterSite'
+// import UserList from './components/userListComponentPack/UserList'
+// import UserEditModal from './components/userListComponentPack/UserEditModal'
 
 
 import { UserHome } from './components/userListComponentPack/UserHome';
@@ -14,72 +14,71 @@ import Swhome from './components/StarWarsComponents/Swhome';
 
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
-import { RoutesComp } from './RouterComp'
+// import { RoutesComp } from './RouterComp'
 import Switchcomponent from './components/Switchcomponent/Switchcomponent'
 import Maingame from './components/Gameplayapp/Maingame'
 import GameEdit from './components/Gameplayapp/GameEdit'
 import Login from './components/Gameplayapp/AuthPages/Login'
 import Register from './components/Gameplayapp/AuthPages/Register'
-import { AuthContext } from './components/Gameplayapp/Context/authContext'
-import authService from './services/authService'
+import { AuthContext, AuthProvider } from './components/Gameplayapp/Context/authContext'
 
 
 function App() {
-    const navigate = useNavigate();
 
     const [count, setCount] = useState(0);
-    const [auth, setAuth] = useState(() =>{
-     return {};
-    }
-  );
+  //   Logic tranfered into Auth Context
+  // const [auth, setAuth] = useState(() =>{
+  //    return {};
+  //   }
+  // );
 
-    const loginSubmitHandler = async (values) => {
-        //! error handling and validation!
+  //   const loginSubmitHandler = async (values) => {
+  //       //! error handling and validation!
 
-        console.log('loginSubmitHandler')
-        console.log(values)
-        const result = await authService.login(
-          values
-        )
-        const data = await result.json();
+  //       console.log('loginSubmitHandler')
+  //       console.log(values)
+  //       const result = await authService.login(
+  //         values
+  //       )
+  //       const data = await result.json();
         
-        setAuth(data)
+  //       setAuth(data)
 
          
-        navigate("gameplay/") 
+  //       navigate("gameplay/") 
         
-        // console.log(await result.json())
-  };
+  //       // console.log(await result.json())
+  // };
 
-  const regSubmitHandler = async (values) => {
-        console.log('regSubmitHandler')
-        console.log(values)
-        //! error handling and validation!
-        const result = await authService.register(values)
-        const data = await result.json()
+  // const regSubmitHandler = async (values) => {
+  //       console.log('regSubmitHandler')
+  //       console.log(values)
+  //       //! error handling and validation!
+  //       const result = await authService.register(values)
+  //       const data = await result.json()
 
-        //! server login
-        setAuth(data);
-        console.log(result)
+  //       //! server login
+  //       setAuth(data);
+  //       console.log(result)
 
 
+  // };
 
-  };
-
-    const values = {
-        loginSubmitHandler,
-        regSubmitHandler,
-        email: auth.email,
-        password: auth.password,
-        isAuthenticated: !!auth.email,    
-      }
+  //   const values = {
+  //       loginSubmitHandler,
+  //       regSubmitHandler,
+  //       email: auth.email,
+  //       password: auth.password,
+  //       isAuthenticated: !!auth.email,    
+  //     }
 
 
 
   return (
     <>
       <Switchcomponent />
-      <AuthContext.Provider value={values}>
+      {/* <AuthContext.Provider value={values}> */}
+        <AuthProvider>
             <Routes>    
                         {/* <Route path="/" element={   <Switchcomponent />} /> */}
                         <Route path="/userlist" element={   <UserHome />} />
@@ -94,7 +93,8 @@ function App() {
 
                     
        </Routes>
-       </AuthContext.Provider>
+       {/* </AuthContext.Provider> */}
+       </AuthProvider>
     
     
 

@@ -1,4 +1,5 @@
 
+
 import { useEffect, useState } from "react";
 import GameslistItems from "./GameslistItems";
 import Headergame from "./Headergame";
@@ -6,6 +7,7 @@ import styles from "./Maingame.module.css"
 import gamesService from "../../services/gamesService";
 import GamesDetails from "./GameDetails";
 import { Outlet } from "react-router-dom";
+
 
 
 export const Maingame = () => {
@@ -72,7 +74,9 @@ export const Maingame = () => {
                 <h2>ALL new games are</h2>
                 <h3>Only in GamesPlay</h3>
             </div>
-            <img src="./public/images/four_slider_img01.png" alt="hero"></img>
+            {/* not dispayed for now */}
+            {/* <img src="/images/four_slider_img01.png" alt="hero" />                        <img src="./assets/images/avatar-1.jpg" alt="hero"></img> */}
+
 
              {selectedGameId && (
                  <GamesDetails

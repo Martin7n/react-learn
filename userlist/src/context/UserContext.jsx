@@ -10,6 +10,10 @@ export const UserContext = createContext({
     userLogoutHandler: () => null,
 });
 
+AuthContext.displayName = 'AuthContext';
+
+
+
 export function useUserContext() {
     const data = useContext(UserContext);
 
