@@ -24,7 +24,7 @@ export const Headergame = (
                        
                         <div id="user">
                             <p> Hello, {email}</p>
-                            <a href="#">Create Game</a>
+                            <a href="/gameplay/create">Create Game</a>
                             <a href="#">Logout</a>
                         </div>}
 
