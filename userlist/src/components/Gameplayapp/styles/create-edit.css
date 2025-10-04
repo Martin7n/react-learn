@@ -21,15 +21,16 @@ input[type="text"] {
     font-size: 24px;
     border-radius: 50px;
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
-    min-width: 250px;
+    min-width: 550px;
 }
 
 input[type="number"] {
    
-    min-width: 250px;
+    min-width: 550px;
 }
 
- 
+
+
 
 
 textarea {

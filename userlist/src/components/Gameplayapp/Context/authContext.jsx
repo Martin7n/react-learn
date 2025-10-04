@@ -1,19 +1,21 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/authService";
+import usePersistedState from "../../../hooks/usePersistedState";
 
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
     //the logic from App.jsx is transfered into wrapper-context element
     const navigate = useNavigate();
     
-    const [auth, setAuth] = useState(() =>{
-         return {};
-        }
-      );
+    // const [auth, setAuth] = useState(() =>{
+    //      return {};
+    //     }
+    //   );
+    const [auth, setAuth] = usePersistedState('auth', {});
 
 
     //handler 1

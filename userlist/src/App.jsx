@@ -20,7 +20,7 @@ import Maingame from './components/Gameplayapp/Maingame'
 import GameEdit from './components/Gameplayapp/GameEdit'
 import Login from './components/Gameplayapp/AuthPages/Login'
 import Register from './components/Gameplayapp/AuthPages/Register'
-import { AuthContext, AuthProvider } from './components/Gameplayapp/Context/authContext'
+import { AuthProvider } from './components/Gameplayapp/Context/authContext'
 
 
 function App() {
