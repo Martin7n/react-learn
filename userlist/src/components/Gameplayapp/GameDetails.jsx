@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const GamesDetails = ({gameId, onClose}) => {
 
     const [gameDetails, setGameDetails] = useState({})
-
     const navigate = useNavigate();
 
     console.log(`gameId in details => ${gameId}`)
@@ -21,6 +20,20 @@ const GamesDetails = ({gameId, onClose}) => {
         )}, [gameId]
 
     );
+
+    const delGameHandler = async () => {
+
+        const confirmed = confirm("Are you sure you want to delete the game?")
+
+        if (confirmed) {
+            await gamesService.delGame(gameId)
+
+            navigate("/gameplay")
+        }
+
+
+
+    }
 
 
     return (
@@ -72,7 +85,7 @@ const GamesDetails = ({gameId, onClose}) => {
                 <div className="buttons">
                     
                     <Link to={`/gameplay/edit/${gameId}`} className="button">Edit</Link>
-                    <a href="#" className="button">Delete</a>
+                    <a href="#" className="button" onClick={delGameHandler}>Delete</a>
 
    
                 </div>

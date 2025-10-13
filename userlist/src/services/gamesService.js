@@ -89,7 +89,27 @@ export default {
 
     },
 
-    delGame(){gameId},
+    async delGame(gameId){
+        const token = JSON.parse(localStorage.getItem("auth"))
+        const options = {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token.accessToken
+            },
+            // body: JSON.stringify(data) 
+        }
+
+        const result = await fetch(baseUrl + gameId, options)
+                        .then(response => response.json())
+                        .catch(e => console.log(e.message));
+        return result;
+
+
+
+
+
+    },
 
 
 

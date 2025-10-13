@@ -22,7 +22,7 @@ const GameCreate = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         console.log('Submitting')
-        //!! todo - validation, service, navigate, refactoring into hook and adding the new game into the client-side list
+        //!! todo - validation, service(x), navigate(x), refactoring into hook and adding the new game into the client-side list
         console.log(formData)
         await gamesService.createGame(formData)
 
