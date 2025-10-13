@@ -23,6 +23,7 @@ import Register from './components/Gameplayapp/AuthPages/Register'
 import { AuthProvider } from './components/Gameplayapp/Context/authContext'
 import GameCreate from './components/Gameplayapp/GameCreate';
 import AllGame from './components/Gameplayapp/AllGame';
+import LogoutUser from './components/Gameplayapp/AuthPages/LogoutUser';
 
 
 function App() {
@@ -92,7 +93,7 @@ function App() {
                         <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
                         <Route path="/gameplay/login" element={<Login />} />
                         <Route path="/gameplay/register" element={<Register />} />
-                        <Route path="/gameplay/logout" element={<Login />} />
+                        <Route path="/gameplay/logout" element={<LogoutUser />} />
 
                     
        </Routes>

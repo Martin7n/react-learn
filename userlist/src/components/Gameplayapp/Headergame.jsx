@@ -25,7 +25,7 @@ export const Headergame = (
                         <div id="user">
                             <p> Hello, {email}</p>
                             <Link to="/gameplay/create">Create Game</Link>
-                            <Link to="#">Logout</Link>
+                            <Link to="/gameplay/logout">Logout</Link>
                         </div>}
 
                         {!isAuthenticated &&

@@ -50,14 +50,22 @@ export const AuthProvider = ({ children }) => {
         setAuth(data);
         console.log(result)
 
-
-
   };
+
+
+  const logoutSubmitHandler = () => {
+        setAuth({})
+        localStorage.removeItem('accessToken');
+
+        // localStorage.removeItem('auth');
+
+    }
 
   
     const values = {
         loginSubmitHandler,
         regSubmitHandler,
+        logoutSubmitHandler,
         email: auth.email,
         password: auth.password,
         isAuthenticated: !!auth.email,    

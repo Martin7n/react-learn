@@ -51,6 +51,25 @@ const authService = {
 
         
     },
+
+
+    async logout(formData){
+
+        const reqUrl = `${baseUrl}/users/logout`
+        const token = JSON.parse(localStorage.getItem("auth"))
+        const options = {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token.accessToken
+            },
+            body: JSON.stringify(data) 
+        }
+        const response = await fetch(reqUrl, options)
+        console.log(response)
+
+
+    }
 };
 
 export default authService;
