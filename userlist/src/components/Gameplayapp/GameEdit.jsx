@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import gamesService from "../../services/gamesService";
+import { useNavigate } from "react-router-dom";
 import "./styles/create-edit.css"
 
 
@@ -19,6 +20,8 @@ const GameEdit = () => {
             summary: ''
         });
 
+        const navigate = useNavigate();
+
 
         useEffect(() => {
         gamesService.getOneGame(gameId).then((game) => {
@@ -36,9 +39,17 @@ const GameEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(gameId, formData)
+
+        gamesService.editGame(gameId, formData)
+
+        navigate('http://localhost:5173/gameplay')
         
     };
-    const handleChange = () => {};
+
+    const handleChange = (e) => {
+         setFormData(state => ({...state, [e.target.name]: e.target.value}))
+    };
 
     return  (
             <section id="edit-page" className="auth">

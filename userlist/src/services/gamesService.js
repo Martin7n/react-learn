@@ -68,7 +68,7 @@ export default {
 
         const token = JSON.parse(localStorage.getItem("auth"))
         const options = {
-            method: "PATCH",
+            method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
                 'X-Authorization': token.accessToken
