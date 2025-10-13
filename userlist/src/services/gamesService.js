@@ -42,7 +42,46 @@ export default {
 
     },
 
-    editGame(gameId){
+    async createGame(data){
+
+        //!! token transfer to be updated
+        const token = JSON.parse(localStorage.getItem("auth"))
+        const options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token.accessToken
+            },
+            body: JSON.stringify(data) 
+        }
+
+        
+
+        const result = await fetch(baseUrl, options)
+                        .then(response => response.json())
+                        .catch(e => console.log(e.message));
+        return result;
+
+    },
+
+    async editGame(gameId, data){
+
+        const token = JSON.parse(localStorage.getItem("auth"))
+        const options = {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token.accessToken
+            },
+            body: JSON.stringify(data) 
+        }
+
+        
+
+        const result = await fetch(baseUrl + gameId, options)
+                        .then(response => response.json())
+                        .catch(e => console.log(e.message));
+        return result;
 
     },
 

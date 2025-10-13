@@ -34,7 +34,10 @@ const GameEdit = () => {
 
     // if (!gameData) return <p>Loading...</p>;
 
-    const handleSubmit = () => {};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+    };
     const handleChange = () => {};
 
     return  (

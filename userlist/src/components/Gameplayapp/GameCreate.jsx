@@ -1,4 +1,6 @@
 import { useState } from "react";
+import gamesService from "../../services/gamesService";
+import { useNavigate } from "react-router-dom";
 
 
 const initialValues = {
@@ -9,19 +11,23 @@ const initialValues = {
             summary: '',
 }
 
-
 const GameCreate = () => {
     
     const [formData, setFormData] = useState(
         initialValues
         );
+    const navigate = useNavigate()
 
     
     const onSubmit = (e) => {
         e.preventDefault();
         console.log('Submitting')
-        //!! todo - validation, service, navigate, refactoring into hook
+        //!! todo - validation, service, navigate, refactoring into hook and adding the new game into the client-side list
         console.log(formData)
+        gamesService.createGame(formData)
+
+        navigate('http://localhost:5173/gameplay')
+        
 
     };
     const OnChange = (e) => {
