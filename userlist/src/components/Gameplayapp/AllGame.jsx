@@ -13,20 +13,11 @@ import { Outlet } from "react-router-dom";
 export const AllGame = () => {
 
 
+
     const [games, setGames] = useState([]);
     const [selectedGameId, setSelectedGameId] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showDetails, setShowDetails] = useState(false);
-
-    // useEffect( () => 
-    //        { setLoading(true);
-    //         gamesService.getLatestGame()
-    //         .then(games => setGames(games))
-    //         .catch(e => console.log(e.message))
-    //         .finally(setLoading(false))
-    //     }, 
-    //         []
-    // );
 
     useEffect(() => {
             setLoading(true);
@@ -43,7 +34,7 @@ export const AllGame = () => {
     setSelectedGameId(id);
     };
 
-
+ 
 
     return (
         
@@ -86,7 +77,7 @@ export const AllGame = () => {
              )}
 
             <div id={styles.homepage}>
-                <h1>Latest Games</h1>
+                <h1>All Games</h1>
 
            { games.map(game => <GameslistItems 
                     key={game._id} 
@@ -107,10 +98,7 @@ export const AllGame = () => {
         </>
 
 
-
     )
-
-
 
 };
 export default AllGame;

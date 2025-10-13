@@ -22,10 +22,6 @@ const GamesDetails = ({gameId, onClose}) => {
 
     );
 
-    
-    
-
-
 
     return (
         <section id="game-details">
@@ -54,7 +50,7 @@ const GamesDetails = ({gameId, onClose}) => {
                 </div>
   
                 <p className="text">
-                    {gameDetails.text}
+                    {gameDetails.summary}
                 </p>
 
                 {/* <!-- Bonus ( for Guests and Users ) --> */}

@@ -19,16 +19,15 @@ const GameCreate = () => {
     const navigate = useNavigate()
 
     
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log('Submitting')
         //!! todo - validation, service, navigate, refactoring into hook and adding the new game into the client-side list
         console.log(formData)
-        gamesService.createGame(formData)
+        await gamesService.createGame(formData)
 
-        navigate('http://localhost:5173/gameplay')
+        navigate('/gameplay')
         
-
     };
     const OnChange = (e) => {
         const {name, value} = e.target;

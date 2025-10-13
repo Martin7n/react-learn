@@ -37,13 +37,13 @@ const GameEdit = () => {
 
     // if (!gameData) return <p>Loading...</p>;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(gameId, formData)
 
-        gamesService.editGame(gameId, formData)
+        const data = await gamesService.editGame(gameId, formData);
+        console.log(data)
 
-        navigate('http://localhost:5173/gameplay')
+        navigate('/gameplay')
         
     };
 

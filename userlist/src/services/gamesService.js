@@ -6,8 +6,11 @@ export default {
 
     async getLatestGame(){
 
+        
+    const burl = 'http://localhost:3030/data/games'
 
-        const data = await fetch(`${baseUrl}?sortBy=_createdOn%20desc`)
+        const data = await fetch(`${baseUrl}?offset=0&pageSize=3?sortBy=_createdOn%20desc`)
+        // const data = await fetch(`${burl}?sortBy=val%20desc%2C_createdOn`)
             .then(response => response.json())
             .catch(e => console.log(e.message));
 
@@ -26,6 +29,7 @@ export default {
             .catch(e => console.log(e.message));
 
         const gamesList = Object.values(data) 
+        console.log(gamesList)
         
         return gamesList;
 

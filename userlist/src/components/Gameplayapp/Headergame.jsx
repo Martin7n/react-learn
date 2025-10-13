@@ -18,14 +18,14 @@ export const Headergame = (
                    
                     <h1><a className={styles.home} href="#">GamesPlay</a></h1>
                     <nav>
-                        <a href="#">All games</a>
+                        <Link to="/gameplay/all-games">All games</Link>
 
                         {isAuthenticated &&
                        
                         <div id="user">
                             <p> Hello, {email}</p>
-                            <a href="/gameplay/create">Create Game</a>
-                            <a href="#">Logout</a>
+                            <Link to="/gameplay/create">Create Game</Link>
+                            <Link to="#">Logout</Link>
                         </div>}
 
                         {!isAuthenticated &&

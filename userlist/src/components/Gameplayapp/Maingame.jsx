@@ -7,7 +7,7 @@ import styles from "./Maingame.module.css"
 import gamesService from "../../services/gamesService";
 import GamesDetails from "./GameDetails";
 import { Outlet } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 
 export const Maingame = () => {
@@ -32,7 +32,8 @@ export const Maingame = () => {
             setLoading(true);
 
             setTimeout(() => {
-                gamesService.getAllgames()
+                // gamesService.getAllgames()
+                gamesService.getLatestGame()
                 .then((games) => setGames(games))
                 .catch((err) => console.error("Error fetching games:", err))
                 .finally(() => setLoading(false));
@@ -52,9 +53,13 @@ export const Maingame = () => {
         
         <div id="box">
 
+          
+
             <Headergame />
 
         <main id={styles.maincontent}>
+
+            <Link to="/games/all-game">All games</Link>
 
         </main>
 
@@ -109,9 +114,6 @@ export const Maingame = () => {
 
 
     )
-
-
-
 
 
 

@@ -22,6 +22,7 @@ import Login from './components/Gameplayapp/AuthPages/Login'
 import Register from './components/Gameplayapp/AuthPages/Register'
 import { AuthProvider } from './components/Gameplayapp/Context/authContext'
 import GameCreate from './components/Gameplayapp/GameCreate';
+import AllGame from './components/Gameplayapp/AllGame';
 
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
                         <Route path="/starwars" element={   <Swhome />} />
                         <Route path="/gameplay" element={ <Maingame />} />
                         <Route path="/games" element={ <Maingame />} />
+                        <Route path="/gameplay/all-games" element={ <AllGame />} />
                         <Route path="/gameplay/create" element={<GameCreate />} />
                         <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
                         <Route path="/gameplay/login" element={<Login />} />
