@@ -24,6 +24,7 @@ import { AuthProvider } from './components/Gameplayapp/Context/authContext'
 import GameCreate from './components/Gameplayapp/GameCreate';
 import AllGame from './components/Gameplayapp/AllGame';
 import LogoutUser from './components/Gameplayapp/AuthPages/LogoutUser';
+import AuthGuard from './components/Guards/AuthGuard';
 
 
 function App() {
@@ -89,11 +90,17 @@ function App() {
                         <Route path="/gameplay" element={ <Maingame />} />
                         <Route path="/games" element={ <Maingame />} />
                         <Route path="/gameplay/all-games" element={ <AllGame />} />
-                        <Route path="/gameplay/create" element={<GameCreate />} />
-                        <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
+                        
+
+                          <Route element={<AuthGuard />}>
+                            <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
+                            <Route path="/gameplay/create" element={<GameCreate />} />
+
+                          </Route>
                         <Route path="/gameplay/login" element={<Login />} />
                         <Route path="/gameplay/register" element={<Register />} />
                         <Route path="/gameplay/logout" element={<LogoutUser />} />
+                        <Route path="*" element={<Navigate to="/gameplay" replace />} />
 
                     
        </Routes>
