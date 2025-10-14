@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import gamesService from "../../services/gamesService";
 import { useNavigate } from "react-router-dom";
 import "./styles/create-edit.css"
+import useError from "../../hooks/useError";
 
 
 
@@ -10,6 +11,8 @@ const GameEdit = () => {
 
         const {gameId} = useParams();
         const {gameData, setGameData} = useState(null)
+        const { errorState, setError, clearError } = useError(5000)
+        
 
 
         const [formData, setFormData] = useState({
@@ -39,11 +42,20 @@ const GameEdit = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        clearError();
 
-        const data = await gamesService.editGame(gameId, formData);
-        console.log(data)
+        try {
+            const data = await gamesService.editGame(gameId, formData);
+            navigate('/gameplay')
 
-        navigate('/gameplay')
+
+        } catch (err) {
+            console.error("Submission failed:", err);
+            setError("Something went wrong. Please try again.")
+
+        };
+
+
         
     };
 
@@ -53,6 +65,12 @@ const GameEdit = () => {
 
     return  (
             <section id="edit-page" className="auth">
+
+                {errorState && 
+                    <div className="error">
+                        <h2> {errorState}</h2>
+                    </div>
+                }
             <form id="edit" onSubmit={handleSubmit}>
                 <div className="container">
                 <h1>Edit Game</h1>
