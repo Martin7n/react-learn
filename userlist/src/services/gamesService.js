@@ -56,16 +56,30 @@ export default {
                 'Content-Type': 'application/json',
                 'X-Authorization': token.accessToken
             },
-            body: JSON.stringify(data) 
+            body: JSON.stringify(data)  
         }
 
         
+        try {
 
-        const result = await fetch(baseUrl, options)
-                        .then(response => response.json())
-                        .catch(e => console.log(e.message));
-        return result;
+            const response = await fetch(baseUrl, options)
+            const result = await response.json();
+            
+            if (!response.ok) { 
+                throw new Error(result?.message || `Response status: ${response.status}`);
+            }
+            
+            console.log(result);
+            return result;
 
+
+        } catch (error) {
+             throw error;
+            
+        }
+        
+        
+       
     },
 
     async editGame(gameId, data){

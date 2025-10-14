@@ -49,3 +49,9 @@ textarea {
     min-width: 250px;
 
 }
+
+.error {
+    display: flex;
+    min-width: max-content;
+    color: #ecf0f3;
+}

@@ -16,6 +16,8 @@ const GameCreate = () => {
     const [formData, setFormData] = useState(
         initialValues
         );
+
+    const [errorMsg, setErrorMsg] = useState('')  
     const navigate = useNavigate()
 
     
@@ -24,9 +26,16 @@ const GameCreate = () => {
         console.log('Submitting')
         //!! todo - validation, service(x), navigate(x), refactoring into hook and adding the new game into the client-side list
         console.log(formData)
-        await gamesService.createGame(formData)
 
-        navigate('/gameplay')
+        try {        
+            const returnedData = await gamesService.createGame(formData)
+            console.log(`returned ${returnedData}`)
+            // navigate('/gameplay')
+        } catch (err) {  
+            console.error("Submission failed:", err);
+            setErrorMsg(err.message || "Something went wrong. Please try again.");
+        } 
+
         
     };
     const OnChange = (e) => {
@@ -44,6 +53,11 @@ const GameCreate = () => {
     return (
 
         <section id="create-page" className="auth">
+
+            {errorMsg && <div className="error">
+                    <h2>Please try again: {errorMsg}</h2>
+                </div>}
+            
             <form id="create" onSubmit={onSubmit}>
                 <div className="container">
 
