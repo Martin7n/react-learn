@@ -1,6 +1,7 @@
 import { useState } from "react";
 import gamesService from "../../services/gamesService";
 import { useNavigate } from "react-router-dom";
+import useError from "../../hooks/useError";
 
 
 const initialValues = {
@@ -17,13 +18,15 @@ const GameCreate = () => {
         initialValues
         );
 
-    const [errorMsg, setErrorMsg] = useState('')  
+    // const [errorMsg, setErrorMsg] = useState('')  
+
+    const { errorState, setError, clearError } = useError(5000)
     const navigate = useNavigate()
 
     
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log('Submitting')
+        clearError();
         //!! todo - validation, service(x), navigate(x), refactoring into hook and adding the new game into the client-side list
         console.log(formData)
 
@@ -33,7 +36,9 @@ const GameCreate = () => {
             // navigate('/gameplay')
         } catch (err) {  
             console.error("Submission failed:", err);
-            setErrorMsg(err.message || "Something went wrong. Please try again.");
+            setError("Something went wrong. Please try again.")
+            // setErrorMsg(err.message || "Something went wrong. Please try again.");
+
         } 
 
         
@@ -54,8 +59,8 @@ const GameCreate = () => {
 
         <section id="create-page" className="auth">
 
-            {errorMsg && <div className="error">
-                    <h2>Please try again: {errorMsg}</h2>
+            {errorState && <div className="error">
+                    <h2> {errorState}</h2>
                 </div>}
             
             <form id="create" onSubmit={onSubmit}>
