@@ -2,6 +2,7 @@ import { useState } from "react";
 import gamesService from "../../services/gamesService";
 import { useNavigate } from "react-router-dom";
 import useError from "../../hooks/useError";
+import formsValiadations from "./utils/formValidations";
 
 
 const initialValues = {
@@ -30,10 +31,12 @@ const GameCreate = () => {
         //!! todo - validation, service(x), navigate(x), refactoring into hook and adding the new game into the client-side list
         console.log(formData)
 
+        formsValiadations(formData)
+
         try {        
             const returnedData = await gamesService.createGame(formData)
             console.log(`returned ${returnedData}`)
-            // navigate('/gameplay')
+            navigate('/gameplay')
         } catch (err) {  
             console.error("Submission failed:", err);
             setError("Something went wrong. Please try again.")
@@ -47,9 +50,17 @@ const GameCreate = () => {
         const {name, value} = e.target;
 
         setFormData(data => ({...data, [name]: value}))
-        console.log(formData)
+        console.log("formData")
 
     };
+
+    const blurCheckValues = (e) => {
+        if (!e.target.value.trim()) {
+            console.log(`${e.target.name} cannot be blank`)
+        } else {
+             console.log(`${e.target.name} cannot be ${e.target.value}`)
+        }
+    }
     
 
 
@@ -59,7 +70,8 @@ const GameCreate = () => {
 
         <section id="create-page" className="auth">
 
-            {errorState && <div className="error">
+            {errorState && 
+                <div className="error">
                     <h2> {errorState}</h2>
                 </div>}
             
@@ -75,6 +87,8 @@ const GameCreate = () => {
                     placeholder="Enter game title..."
                     value={formData.title}
                     onChange={OnChange}
+                    onBlur={blurCheckValues}
+
                     />
 
                     <label htmlFor="category">Category:</label>
@@ -85,6 +99,7 @@ const GameCreate = () => {
                     placeholder="Enter game category..."
                     value={formData.category}
                     onChange={OnChange}
+                    onBlur={blurCheckValues}
                     />
 
                     <label htmlFor="levels">MaxLevel:</label>
@@ -96,6 +111,8 @@ const GameCreate = () => {
                     placeholder="1"
                     value={formData.maxLevel}
                     onChange={OnChange}
+                    onBlur={blurCheckValues}
+
                     />
 
                     <label htmlFor="game-img">Image:</label>
@@ -106,6 +123,8 @@ const GameCreate = () => {
                     placeholder="Upload a photo..."
                     value={formData.imageUrl}
                     onChange={OnChange}
+                    onBlur={blurCheckValues}
+
                     />
 
                     <label htmlFor="summary">Summary:</label>
@@ -113,6 +132,8 @@ const GameCreate = () => {
                     id="summary"
                     value={formData.summary}
                     onChange={OnChange}
+                    onBlur={blurCheckValues}
+
                     > </textarea>
                     <input className="btn submit" 
                     type="submit"
