@@ -61,7 +61,7 @@ const LoginFormKyes =     {
                             value="Login"/>
                            
                         <p className="field">
-                            <span>If you don't have profile click <a href="#">here</a></span>
+                            <span>If you don't have profile click <a href="/gameplay/register">here</a></span>
                         </p>
                     </div>
                 </form>

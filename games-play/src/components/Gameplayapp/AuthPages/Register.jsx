@@ -69,7 +69,7 @@ const Register = () => {
                     <input className="btn submit" type="submit" value="Register" onSubmit={onSubmit}/>
 
                     <p className="field">
-                        <span>If you already have profile click <a href="#">here</a></span>
+                        <span>If you already have profile click <a href="/gameplay/login">here</a></span>
                     </p>
                 </div>
             </form>
