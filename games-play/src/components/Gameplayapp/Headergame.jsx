@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from "./Headergame.module.css"
-import "./styles/navigation.css"
+// import "./styles/navigation.css"
 import { useContext } from 'react';
 import AuthContext from './Context/authContext';
 
@@ -16,7 +16,7 @@ export const Headergame = (
 
            
                    
-                    <h1><a className={styles.home} href="#">GamesPlay</a></h1>
+                    <h1><a className={styles.home} href="/">GamesPlay</a></h1>
                     <nav>
                         <Link to="/gameplay/all-games">All games</Link>
 

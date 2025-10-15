@@ -1,14 +1,10 @@
 
 import { Routes, Route } from 'react-router-dom';
-import About from './components/userListComponentPack/About'
-
-import { UserHome } from './components/userListComponentPack/UserHome';
-import Swhome from './components/StarWarsComponents/Swhome';
-import Switchcomponent from './components/Switchcomponent/Switchcomponent';
 import Login from './components/Gameplayapp/AuthPages/Login';
 import Register from './components/Gameplayapp/AuthPages/Register';
 import AllGame from './components/Gameplayapp/AllGame';
 import AuthGuard from './components/Guards/AuthGuard';
+import Maingame from './components/Gameplayapp/Maingame';
 
 
 export const RoutesComp = () => {
@@ -16,11 +12,8 @@ export const RoutesComp = () => {
 
     return (
         <Routes>    
-                    <Route path="/" element={   <Switchcomponent />} />
-                    <Route path="/userlist" element={   <UserHome />} />
-                    <Route path="/starwars" element={   <Swhome />} />
-                    {/* <Route path="/gameplay" element={ <Swhome />} />   */}
-
+                    <Route path="/" element={   <Maingame />} />
+                  
                         <Route element={<AuthGuard />}>
                             <Route path="/gameplay/edit/:gameId" element={<GameEdit />} />
                             <Route path="/gameplay/create" element={<GameCreate />} />

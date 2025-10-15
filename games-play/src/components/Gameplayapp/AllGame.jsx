@@ -43,7 +43,6 @@ export const AllGame = () => {
         
         <div id="box">
 
-            <Headergame />
 
         <main id={styles.maincontent}>
 
@@ -66,7 +65,7 @@ export const AllGame = () => {
                 <h3>Only in GamesPlay</h3>
             </div>
             {/* not dispayed for now */}
-            {/* <img src="/images/four_slider_img01.png" alt="hero" />                        <img src="./assets/images/avatar-1.jpg" alt="hero"></img> */}
+            <img src="/images/four_slider_img01.png" alt="hero" />                        <img src="./assets/images/avatar-1.jpg" alt="hero"></img>
 
 
              {selectedGameId && (

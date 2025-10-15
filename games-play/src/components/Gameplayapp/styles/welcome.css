@@ -56,11 +56,15 @@
     font-family: "Agency FB";
 }
 
-#welcome-world>#home-page {
+#welcomeworld>#homepage {
     width: 50% fit-content;
     margin: auto;
     text-align: center;
+    
 }
+
+
+
 
 #home-page {
     background-color: transparent;

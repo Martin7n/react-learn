@@ -2,15 +2,16 @@
 
 import { useEffect, useState } from "react";
 import GameslistItems from "./GameslistItems";
-import Headergame from "./Headergame";
 import styles from "./Maingame.module.css"
+
 import gamesService from "../../services/gamesService";
 import GamesDetails from "./GameDetails";
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
+import myImage from '../../assets/images/four_slider_img01.png';
 
-export const Maingame = () => {
+ export const Maingame = () => {
 
 
     const [games, setGames] = useState([]);
@@ -18,15 +19,6 @@ export const Maingame = () => {
     const [loading, setLoading] = useState(true);
     const [showDetails, setShowDetails] = useState(false);
 
-    // useEffect( () => 
-    //        { setLoading(true);
-    //         gamesService.getLatestGame()
-    //         .then(games => setGames(games))
-    //         .catch(e => console.log(e.message))
-    //         .finally(setLoading(false))
-    //     }, 
-    //         []
-    // );
 
     useEffect(() => {
             setLoading(true);
@@ -55,7 +47,7 @@ export const Maingame = () => {
 
           
 
-            <Headergame />
+       
 
         <main id={styles.maincontent}>
 
@@ -79,8 +71,8 @@ export const Maingame = () => {
                 <h2>ALL new games are</h2>
                 <h3>Only in GamesPlay</h3>
             </div>
-            {/* not dispayed for now */}
-            {/* <img src="/images/four_slider_img01.png" alt="hero" />                        <img src="./assets/images/avatar-1.jpg" alt="hero"></img> */}
+
+            <img src={myImage} alt="hero"/>
 
 
              {selectedGameId && (

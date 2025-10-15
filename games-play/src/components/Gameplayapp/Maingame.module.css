@@ -10,6 +10,7 @@
     position: relative;
     box-sizing: border-box;
     text-align: center;
+    background-color: rgb(73, 67, 67);
 }
 
 #welcomeworld .welcomemessage {
@@ -73,6 +74,11 @@
     padding: 55px;
     height: auto;
     width: auto;
+    /* some */
+    /* background-color: rgb(73, 67, 67); */
+    background-color: #29303c;
+    
+    
 }
 
 .game {
@@ -86,6 +92,7 @@
     float: left;
     height: auto;
     color: rgb(204, 144, 131);
+   ;
 }
 
 .imagewrap {
