@@ -1,7 +1,7 @@
 
 import { useContext } from "react";
 import AuthContext from "../Gameplayapp/Context/authContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 export const AuthGuard = (props) => {
 
@@ -13,7 +13,7 @@ export const AuthGuard = (props) => {
         return <Navigate to="gameplay/login"/>
     }
 
-    return Outlet;
+    return <Outlet />;
 
 
 };

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import gamesService from "../../services/gamesService";
 import './styles/details.css'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import Comments from "./Comments";
 import commentsService from "../../services/commentsService";
+import AuthContext from "./Context/authContext";
 
 
 const GamesDetails = ({gameId, onClose}) => {
@@ -12,6 +13,8 @@ const GamesDetails = ({gameId, onClose}) => {
     const [gameDetails, setGameDetails] = useState({})
     const navigate = useNavigate();
     const [comments, setComments] = useState([])
+    const [newComments, setNewComments] = useState("")
+    const {email, userId} = useContext(AuthContext)
 
     console.log(`gameId in details => ${gameId}`)
 
@@ -36,6 +39,21 @@ const GamesDetails = ({gameId, onClose}) => {
         }, [gameId]
 
     );
+
+
+    const commentsInput = (e) => {
+        setNewComments(e.target.value)
+        // console.log(newComments)
+    };
+    const commentSubmitHandler = (e) => {
+        e.preventDefault();
+
+        console.log(`data ===> {newComments}`)
+        commentsService.addComment(gameId, newComments, userId)
+    };
+
+
+
 
     const delGameHandler = async () => {
 
@@ -106,6 +124,14 @@ const GamesDetails = ({gameId, onClose}) => {
                     
                 </div>
 
+                    <article className="create-comment">
+                        <label>Add new comment:</label>
+                        <form className="form" onSubmit={commentSubmitHandler}>
+                            <textarea name="comment" placeholder="Comment......" onChange={commentsInput}></textarea>
+                            <input className="btn submit" name="comment" type="submit"  value="Add Comment"/>
+                        </form>
+                    </article>
+
                 <div className="buttons">
                     
                     <Link to={`/gameplay/edit/${gameId}`} className="button">Edit</Link>
@@ -116,13 +142,6 @@ const GamesDetails = ({gameId, onClose}) => {
             </div>
 
             
-            {/* <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form">
-                    <textarea name="comment" placeholder="Comment......"></textarea>
-                    <input className="btn submit" type="submit" value="Add Comment">
-                </form>
-            </article> */}
 
         </section>
     )
