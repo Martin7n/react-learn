@@ -2,16 +2,23 @@ import { useState } from "react";
 
 
 
-const Comments = ({gameId}) => {
+const Comments = ({comment}) => {
 
     const [comments, setComments] = useState([]);
 
     // !!todo
 
-    console.log(`${typeof(gameId)} rrrrr`)
+    console.log(`${typeof({comment})} rrrrr`)
 
 
     return (<>
+
+                <li className="comment">      
+                    
+                    <p>{comment.content}</p>
+
+                </li>
+    
      
     </>)
 };

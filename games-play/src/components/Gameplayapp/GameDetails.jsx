@@ -27,7 +27,11 @@ const GamesDetails = ({gameId, onClose}) => {
     );
 
     useEffect( () => 
-        {commentsService.getComments(gameId).then( data => console.log(data))
+        {commentsService.getComments(gameId)
+            .then( (data) => {
+                console.log(data);
+                setComments(data);
+            })
 
         }, [gameId]
 
@@ -79,22 +83,27 @@ const GamesDetails = ({gameId, onClose}) => {
                 </p>
 
                 {/* <!-- Bonus ( for Guests and Users ) --> */}
+
+               
                 <div className="details-comments">
                    
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> */}
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
 
-                             
-                        </li>
-                        <li className="comment">
-                            <p>Content: The best game.</p>
-                        </li>
+                         { comments && 
+                            comments.map((comment) => 
+                            <Comments key={comment.id} comment={comment}/>)
+
+                        }
+                        
+                        {/* <li className="comment">
+                            <p>Content: hardCoded.</p>
+                        </li> */}
                     </ul>
+                    {comments.length === 0 && <p className="no-comment">No comments.</p>}
                     {/* <!-- Display paragraph: If there are no games in the database --> */}
-                    <p className="no-comment">No comments.</p>
+                    
                 </div>
 
                 <div className="buttons">
