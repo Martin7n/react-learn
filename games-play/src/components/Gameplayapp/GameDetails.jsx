@@ -6,16 +6,21 @@ import { Link } from 'react-router-dom';
 import Comments from "./Comments";
 import commentsService from "../../services/commentsService";
 import AuthContext from "./Context/authContext";
+import formsValiadations from "./utils/formValidations";
+import useError from "../../hooks/useError";
 
-
+ let count = 0;
 const GamesDetails = ({gameId, onClose}) => {
 
     const [gameDetails, setGameDetails] = useState({})
     const navigate = useNavigate();
-    const [comments, setComments] = useState([])
-    const [newComments, setNewComments] = useState("")
-    const {email, userId} = useContext(AuthContext)
+    const [comments, setComments] = useState([]);
+    const [newComments, setNewComments] = useState("");
+    const {email, userId} = useContext(AuthContext);
+    const { errorState, setError, clearError } = useError(5000)
+    
 
+   
     console.log(`gameId in details => ${gameId}`)
 
 
@@ -46,18 +51,28 @@ const GamesDetails = ({gameId, onClose}) => {
         console.log(newComments)
     }; 
 
+    const onBlur = (e) => {
+        
+       if (!e.target.value.trim()) {
+            setError(`${e.target.name} cannot be blank`)
+        } 
+
+         console.log(errorState)
+
+    }
+
     const commentSubmitHandler = (e) => {
         e.preventDefault();
 
+
         const newComm = {
-            id: "new",
+            id: `new${++count}${++count}`, //not the best id...
             gameId,
             content: newComments, 
             _ownerId: userId, 
         }
         
         setComments(prevComments => [...prevComments, newComm]);
-
 
         commentsService.addComment(gameId, newComments, userId)
         
@@ -140,7 +155,7 @@ const GamesDetails = ({gameId, onClose}) => {
 
                     <article className="create-comment">
                         <label>Add new comment:</label>
-                        <form className="form" onSubmit={commentSubmitHandler}>
+                        <form className="form" onSubmit={commentSubmitHandler} onBlur={onBlur}>
                             <textarea name="comment" placeholder="Comment......" onChange={commentsInput}></textarea>
                             <input className="btn submit" name="comment" type="submit"  value="Add Comment"/>
                         </form>
