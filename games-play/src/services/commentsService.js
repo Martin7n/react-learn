@@ -1,6 +1,5 @@
 
 const baseUrl = 'http://localhost:3030/data/comments';
-const token = JSON.parse(localStorage.getItem("auth"))
 
 
 
@@ -8,10 +7,14 @@ export default {
 
 
     async getComments(gameId){
+        const token = JSON.parse(localStorage.getItem("auth"))
 
+        console.log(`gameIdService => ${gameId}`)
+
+        const gameId1 = "3564027f-adcd-4425-b2c0-1253d2386c0c";
         const query = new URLSearchParams(
             {
-            where: `gameId="${gameId}"`,
+            where: `gameId="${gameId1}"`,
             load: `owner=_ownerId:users`
             }
         )
@@ -25,9 +28,10 @@ export default {
         };
 
         try {
+            console.log(`${baseUrl}?${query.toString()}`)
             const urlRequest = `${baseUrl}?${query.toString()}`;
 
-            const response = await fetch(baseUrl, options);
+            const response = await fetch(urlRequest, options);
 
             const data = await response.json();
 
@@ -44,6 +48,7 @@ export default {
 
     async addComment(gameId, data){
 
+        const token = JSON.parse(localStorage.getItem("auth"))
 
         const options = {
             method: "POST",

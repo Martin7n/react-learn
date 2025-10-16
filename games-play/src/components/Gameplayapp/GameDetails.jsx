@@ -4,12 +4,14 @@ import './styles/details.css'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import Comments from "./Comments";
+import commentsService from "../../services/commentsService";
 
 
 const GamesDetails = ({gameId, onClose}) => {
 
     const [gameDetails, setGameDetails] = useState({})
     const navigate = useNavigate();
+    const [comments, setComments] = useState([])
 
     console.log(`gameId in details => ${gameId}`)
 
@@ -19,6 +21,15 @@ const GamesDetails = ({gameId, onClose}) => {
         {gamesService.getOneGame(gameId).then(
           (obj) => setGameDetails(obj)
         )}, [gameId]
+
+ 
+
+    );
+
+    useEffect( () => 
+        {commentsService.getComments(gameId).then( data => console.log(data))
+
+        }, [gameId]
 
     );
 
