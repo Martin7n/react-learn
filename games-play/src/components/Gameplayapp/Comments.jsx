@@ -11,11 +11,8 @@ const Comments = ({gameId}) => {
     console.log(`${typeof(gameId)} rrrrr`)
 
 
-
-
-
     return (<>
-    
+     
     </>)
 };
 
