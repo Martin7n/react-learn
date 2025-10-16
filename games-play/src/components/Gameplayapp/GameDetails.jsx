@@ -43,13 +43,25 @@ const GamesDetails = ({gameId, onClose}) => {
 
     const commentsInput = (e) => {
         setNewComments(e.target.value)
-        // console.log(newComments)
-    };
+        console.log(newComments)
+    }; 
+
     const commentSubmitHandler = (e) => {
         e.preventDefault();
 
-        console.log(`data ===> {newComments}`)
+        const newComm = {
+            id: "new",
+            gameId,
+            content: newComments, 
+            _ownerId: userId, 
+        }
+        
+        setComments(prevComments => [...prevComments, newComm]);
+
+
         commentsService.addComment(gameId, newComments, userId)
+        
+
     };
 
 
@@ -108,6 +120,8 @@ const GamesDetails = ({gameId, onClose}) => {
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> */}
+                        
+
 
                          { comments && 
                             comments.map((comment) => 
