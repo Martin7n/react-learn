@@ -37,12 +37,25 @@ export default {
 
     async getOneGame(gameId){
         const url = baseUrl + gameId;
-        const result = await fetch(url)
-        .then(data => data.json()); 
 
-        console.log(result)
+        try {
+            const response = await fetch(url)
 
-        return result;
+            if (!response.ok) { 
+                throw new Error(result?.message || `Response status: ${response.status}`);
+            }
+           
+            const result = await response.json();
+            console.log(result)
+
+            return result;
+        } catch  (error){
+            throw  error
+
+        };
+        
+
+       
 
     },
 

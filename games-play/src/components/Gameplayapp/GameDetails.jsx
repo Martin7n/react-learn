@@ -17,7 +17,7 @@ const GamesDetails = ({gameId, onClose}) => {
     const [comments, setComments] = useState([]);
     const [newComments, setNewComments] = useState("");
     const {email, userId} = useContext(AuthContext);
-    const { errorState, setError, clearError } = useError(5000)
+    const { errorState, setError, clearError } = useError(20000)
     
 
    
@@ -33,6 +33,22 @@ const GamesDetails = ({gameId, onClose}) => {
  
 
     );
+
+    // useEffect( () =>{
+
+    //     try {
+
+    //         gamesService.getOneGame(gameId)
+    //         .then(setGameDetails)
+
+
+    //     } catch (err){
+    //         setError("EEerrrror")
+    //         console.log(errorState)
+
+    //     };
+    // }
+    // );
 
     useEffect( () => 
         {commentsService.getComments(gameId)
@@ -74,8 +90,8 @@ const GamesDetails = ({gameId, onClose}) => {
         
         setComments(prevComments => [...prevComments, newComm]);
 
-        commentsService.addComment(gameId, newComments, userId)
-        
+        commentsService.addComment(gameId, newComments, userId);
+        setNewComments("")
 
     };
 
@@ -95,6 +111,7 @@ const GamesDetails = ({gameId, onClose}) => {
 
 
     }
+
 
 
     return (
@@ -156,7 +173,7 @@ const GamesDetails = ({gameId, onClose}) => {
                     <article className="create-comment">
                         <label>Add new comment:</label>
                         <form className="form" onSubmit={commentSubmitHandler} onBlur={onBlur}>
-                            <textarea name="comment" placeholder="Comment......" onChange={commentsInput}></textarea>
+                            <textarea name="comment" placeholder="Comment......" value={newComments} onChange={commentsInput}></textarea>
                             <input className="btn submit" name="comment" type="submit"  value="Add Comment"/>
                         </form>
                     </article>
